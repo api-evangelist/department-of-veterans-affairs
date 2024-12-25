@@ -17,7 +17,6 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.va.gov/
-    overlays: []
     aid: department-of-veterans-affairs-va:department-of-veterans-affairs-va-api
 common:
   - type: Portal
