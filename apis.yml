@@ -638,8 +638,8 @@ apis:
 name: Department of Veterans Affairs (VA)
 tags:
   - Federal Government
-  - Veterans
   - Healthcare
+  - Veterans
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 common:
   - url: https://developer.va.gov/
