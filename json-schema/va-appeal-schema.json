@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/department-of-veterans-affairs/schemas/appeal.json",
+  "title": "VA Appeal",
+  "description": "An appeal, supplemental claim, or higher-level review tracked through VA's appeals modernization process.",
+  "type": "object",
+  "required": ["id", "type", "attributes"],
+  "properties": {
+    "id": { "type": "string" },
+    "type": {
+      "type": "string",
+      "enum": ["legacyAppeal", "appeal", "supplementalClaim", "higherLevelReview"]
+    },
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "appealIds": { "type": "array", "items": { "type": "string" } },
+        "updated": { "type": "string", "format": "date-time" },
+        "programArea": { "type": "string" },
+        "description": { "type": "string" },
+        "type": { "type": "string" },
+        "aoj": { "type": "string", "enum": ["vba", "vha", "nca", "other"] },
+        "location": { "type": "string", "enum": ["aoj", "bva"] },
+        "status": {
+          "type": "object",
+          "properties": {
+            "type": { "type": "string" },
+            "details": { "type": "object" }
+          }
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "date": { "type": "string", "format": "date" }
+            }
+          }
+        },
+        "issues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "active": { "type": "boolean" },
+              "description": { "type": "string" },
+              "diagnosticCode": { "type": ["string", "null"] },
+              "lastAction": { "type": ["string", "null"] },
+              "date": { "type": ["string", "null"], "format": "date" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

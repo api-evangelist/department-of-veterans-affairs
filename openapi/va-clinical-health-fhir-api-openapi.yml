@@ -1,0 +1,194 @@
+openapi: 3.1.0
+info:
+  title: VA Clinical Health API (FHIR)
+  description: >-
+    The VA Clinical Health API exposes clinical data from VA electronic health
+    records using HL7 FHIR R4 resources. It provides authorized health-care
+    partners read access to Patient, Allergy, Medication, Condition,
+    Observation, Encounter, Procedure, and other clinical resources via
+    SMART-on-FHIR authorization.
+  version: '1'
+  contact:
+    name: VA API Platform
+    url: https://developer.va.gov/support/contact-us
+externalDocs:
+  description: Clinical Health API documentation
+  url: https://developer.va.gov/explore/api/clinical-health
+servers:
+  - url: https://sandbox-api.va.gov/services/fhir/v0/r4
+    description: Sandbox
+  - url: https://api.va.gov/services/fhir/v0/r4
+    description: Production
+tags:
+  - name: Patient
+  - name: AllergyIntolerance
+  - name: Condition
+  - name: Encounter
+  - name: Immunization
+  - name: MedicationRequest
+  - name: Observation
+  - name: Procedure
+  - name: DiagnosticReport
+security:
+  - SmartOnFhir: [launch/patient, patient/*.read]
+paths:
+  /Patient/{id}:
+    get:
+      tags: [Patient]
+      summary: Read a FHIR Patient resource
+      operationId: readPatient
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A FHIR Patient resource
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Patient'
+  /AllergyIntolerance:
+    get:
+      tags: [AllergyIntolerance]
+      summary: Search AllergyIntolerance resources for a patient
+      operationId: searchAllergies
+      parameters:
+        - name: patient
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: FHIR Bundle of AllergyIntolerance
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+  /Condition:
+    get:
+      tags: [Condition]
+      summary: Search Condition resources for a patient
+      operationId: searchConditions
+      parameters:
+        - name: patient
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: FHIR Bundle of Condition
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+  /Observation:
+    get:
+      tags: [Observation]
+      summary: Search Observation resources
+      operationId: searchObservations
+      parameters:
+        - name: patient
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: code
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: FHIR Bundle of Observation
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+  /MedicationRequest:
+    get:
+      tags: [MedicationRequest]
+      summary: Search MedicationRequest resources
+      operationId: searchMedicationRequests
+      parameters:
+        - name: patient
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: FHIR Bundle of MedicationRequest
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+components:
+  securitySchemes:
+    SmartOnFhir:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://sandbox-api.va.gov/oauth2/health/v1/authorization
+          tokenUrl: https://sandbox-api.va.gov/oauth2/health/v1/token
+          scopes:
+            launch/patient: Patient context launch
+            patient/*.read: Read patient-scoped resources
+            offline_access: Refresh tokens
+  schemas:
+    Patient:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          const: Patient
+        id:
+          type: string
+        identifier:
+          type: array
+          items:
+            type: object
+        name:
+          type: array
+          items:
+            type: object
+        telecom:
+          type: array
+          items:
+            type: object
+        gender:
+          type: string
+        birthDate:
+          type: string
+          format: date
+        address:
+          type: array
+          items:
+            type: object
+    Bundle:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          const: Bundle
+        type:
+          type: string
+        total:
+          type: integer
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              resource:
+                type: object
+              fullUrl:
+                type: string
+                format: uri

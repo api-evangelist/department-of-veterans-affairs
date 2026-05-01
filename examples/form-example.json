@@ -1,0 +1,24 @@
+{
+  "data": {
+    "id": "10-10EZ",
+    "type": "va_form",
+    "attributes": {
+      "formName": "10-10EZ",
+      "url": "https://www.va.gov/vaforms/medical/pdf/10-10EZ-fillable.pdf",
+      "title": "Application for Health Benefits",
+      "firstIssuedOn": "2016-07-10",
+      "lastRevisionOn": "2024-03-12",
+      "pages": 5,
+      "validPdf": true,
+      "formUsage": "Use VA Form 10-10EZ to apply for VA health benefits.",
+      "formType": "benefit",
+      "language": "en",
+      "deletedAt": null,
+      "relatedForms": ["10-10EZR"],
+      "benefitCategories": [
+        { "name": "Health Care", "description": "VA health-care eligibility and enrollment." }
+      ],
+      "vaFormAdministration": "Veterans Health Administration"
+    }
+  }
+}

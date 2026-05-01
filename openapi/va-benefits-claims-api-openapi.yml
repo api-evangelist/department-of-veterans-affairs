@@ -1,0 +1,253 @@
+openapi: 3.1.0
+info:
+  title: VA Benefits Claims API
+  description: >-
+    The Benefits Claims API allows authorized partners to submit, track, and
+    retrieve VA benefits claims on behalf of Veterans, accredited
+    representatives, and Veteran Service Organizations.
+  version: '2'
+  contact:
+    name: VA API Platform
+    url: https://developer.va.gov/support/contact-us
+  license:
+    name: Creative Commons Attribution 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+externalDocs:
+  description: Benefits Claims API documentation
+  url: https://developer.va.gov/explore/api/benefits-claims
+servers:
+  - url: https://sandbox-api.va.gov/services/claims/v2
+    description: Sandbox
+  - url: https://api.va.gov/services/claims/v2
+    description: Production
+tags:
+  - name: Claims
+    description: Veteran benefits claims operations
+  - name: 526
+    description: Disability compensation (Form 526) submissions
+  - name: Intent To File
+    description: Intent to File operations
+  - name: Power of Attorney
+    description: Representation requests and POA management
+security:
+  - BearerAuth: []
+paths:
+  /veterans/{veteranId}/claims:
+    get:
+      tags: [Claims]
+      summary: List a Veteran's claims
+      operationId: listClaims
+      parameters:
+        - name: veteranId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Claims list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimsResponse'
+  /veterans/{veteranId}/claims/{id}:
+    get:
+      tags: [Claims]
+      summary: Retrieve a single claim
+      operationId: getClaim
+      parameters:
+        - name: veteranId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Claim
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Claim'
+  /veterans/{veteranId}/526:
+    post:
+      tags: [526]
+      summary: Submit a Form 526 disability compensation claim
+      operationId: submit526
+      parameters:
+        - name: veteranId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Form526Submission'
+      responses:
+        '202':
+          description: Submission accepted
+  /veterans/{veteranId}/intent-to-file:
+    post:
+      tags: [Intent To File]
+      summary: Submit an Intent to File
+      operationId: submitIntentToFile
+      parameters:
+        - name: veteranId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntentToFile'
+      responses:
+        '201':
+          description: Intent recorded
+  /veterans/{veteranId}/power-of-attorney:
+    get:
+      tags: [Power of Attorney]
+      summary: Get current POA for a Veteran
+      operationId: getPOA
+      parameters:
+        - name: veteranId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Current POA
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PowerOfAttorney'
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    ClaimsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Claim'
+    Claim:
+      type: object
+      required: [id, type, attributes]
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          example: claim
+        attributes:
+          type: object
+          properties:
+            baseEndProductCode:
+              type: string
+            claimDate:
+              type: string
+              format: date
+            claimType:
+              type: string
+            claimPhaseDates:
+              type: object
+            decisionLetterSent:
+              type: boolean
+            developmentLetterSent:
+              type: boolean
+            documentsNeeded:
+              type: boolean
+            endProductCode:
+              type: string
+            evidenceWaiverSubmitted5103:
+              type: boolean
+            lighthouseId:
+              type: string
+            status:
+              type: string
+              enum: [PENDING, CLAIM_RECEIVED, INITIAL_REVIEW, EVIDENCE_GATHERING_REVIEW_DECISION, PREPARATION_FOR_NOTIFICATION, COMPLETE]
+    Form526Submission:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            type:
+              type: string
+              const: form/526
+            attributes:
+              type: object
+              properties:
+                claimantCertification:
+                  type: boolean
+                veteranIdentification:
+                  type: object
+                disabilities:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      disabilityActionType:
+                        type: string
+                      classificationCode:
+                        type: string
+                      diagnosticCode:
+                        type: integer
+                serviceInformation:
+                  type: object
+                directDeposit:
+                  type: object
+    IntentToFile:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            type:
+              type: string
+              const: intent_to_file
+            attributes:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum: [compensation, pension, survivor]
+    PowerOfAttorney:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            attributes:
+              type: object
+              properties:
+                code:
+                  type: string
+                name:
+                  type: string
+                phoneNumber:
+                  type: string
+                type:
+                  type: string
+                  enum: [organization, individual]

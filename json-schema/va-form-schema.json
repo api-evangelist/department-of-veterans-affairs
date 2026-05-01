@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/department-of-veterans-affairs/schemas/form.json",
+  "title": "VA Form",
+  "description": "An official Department of Veterans Affairs form catalog entry.",
+  "type": "object",
+  "required": ["id", "type", "attributes"],
+  "properties": {
+    "id": { "type": "string" },
+    "type": { "type": "string", "const": "va_form" },
+    "attributes": {
+      "type": "object",
+      "required": ["formName", "url", "title"],
+      "properties": {
+        "formName": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "title": { "type": "string" },
+        "firstIssuedOn": { "type": ["string", "null"], "format": "date" },
+        "lastRevisionOn": { "type": ["string", "null"], "format": "date" },
+        "pages": { "type": "integer", "minimum": 0 },
+        "sha256": { "type": ["string", "null"] },
+        "validPdf": { "type": "boolean" },
+        "formUsage": { "type": ["string", "null"] },
+        "formToolIntro": { "type": ["string", "null"] },
+        "formToolUrl": { "type": ["string", "null"], "format": "uri" },
+        "formType": { "type": ["string", "null"] },
+        "language": { "type": "string" },
+        "deletedAt": { "type": ["string", "null"], "format": "date-time" },
+        "relatedForms": { "type": "array", "items": { "type": "string" } },
+        "benefitCategories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" }
+            }
+          }
+        },
+        "vaFormAdministration": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

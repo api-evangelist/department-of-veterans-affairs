@@ -1,0 +1,78 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "va": "https://api-evangelist.com/department-of-veterans-affairs/vocab/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+
+    "Facility": {
+      "@id": "va:Facility",
+      "@context": {
+        "name": "schema:name",
+        "facilityType": "va:facilityType",
+        "classification": "va:classification",
+        "website": { "@id": "schema:url", "@type": "@id" },
+        "lat": { "@id": "geo:lat", "@type": "xsd:decimal" },
+        "long": { "@id": "geo:long", "@type": "xsd:decimal" },
+        "timeZone": "va:timeZone",
+        "visn": "va:visn"
+      }
+    },
+    "Form": {
+      "@id": "va:Form",
+      "@context": {
+        "formName": "schema:identifier",
+        "title": "schema:name",
+        "url": { "@id": "schema:url", "@type": "@id" },
+        "firstIssuedOn": { "@id": "schema:datePublished", "@type": "xsd:date" },
+        "lastRevisionOn": { "@id": "schema:dateModified", "@type": "xsd:date" },
+        "pages": { "@id": "schema:numberOfPages", "@type": "xsd:integer" },
+        "language": "schema:inLanguage",
+        "validPdf": { "@id": "va:validPdf", "@type": "xsd:boolean" }
+      }
+    },
+    "Claim": {
+      "@id": "va:Claim",
+      "@context": {
+        "claimDate": { "@id": "dcterms:created", "@type": "xsd:date" },
+        "claimType": "va:claimType",
+        "status": "va:status",
+        "decisionLetterSent": { "@id": "va:decisionLetterSent", "@type": "xsd:boolean" },
+        "documentsNeeded": { "@id": "va:documentsNeeded", "@type": "xsd:boolean" }
+      }
+    },
+    "Appeal": {
+      "@id": "va:Appeal",
+      "@context": {
+        "programArea": "va:programArea",
+        "description": "schema:description",
+        "aoj": "va:agencyOfJurisdiction",
+        "location": "va:appealLocation",
+        "updated": { "@id": "dcterms:modified", "@type": "xsd:dateTime" }
+      }
+    },
+    "VeteranConfirmation": {
+      "@id": "va:VeteranConfirmation",
+      "@context": {
+        "veteran_status": "va:veteranStatus"
+      }
+    },
+    "Service": {
+      "@id": "va:Service",
+      "@context": {
+        "name": "schema:name",
+        "serviceId": "schema:identifier",
+        "active": { "@id": "va:active", "@type": "xsd:boolean" }
+      }
+    },
+    "BenefitCategory": {
+      "@id": "va:BenefitCategory",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description"
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/department-of-veterans-affairs/schemas/veteran-confirmation.json",
+  "title": "Veteran Confirmation",
+  "description": "Result of a Veteran status confirmation request.",
+  "type": "object",
+  "properties": {
+    "veteran_status": {
+      "type": "string",
+      "enum": ["confirmed", "not confirmed"]
+    }
+  },
+  "required": ["veteran_status"]
+}

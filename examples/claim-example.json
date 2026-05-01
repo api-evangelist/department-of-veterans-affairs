@@ -1,0 +1,23 @@
+{
+  "data": {
+    "id": "600131328",
+    "type": "claim",
+    "attributes": {
+      "baseEndProductCode": "020",
+      "claimDate": "2026-01-04",
+      "claimType": "Compensation",
+      "claimPhaseDates": {
+        "phaseChangeDate": "2026-03-21",
+        "currentPhaseBack": false,
+        "latestPhaseType": "EVIDENCE_GATHERING_REVIEW_DECISION"
+      },
+      "decisionLetterSent": false,
+      "developmentLetterSent": true,
+      "documentsNeeded": true,
+      "endProductCode": "020SCR",
+      "evidenceWaiverSubmitted5103": false,
+      "lighthouseId": "8e1c4f9a-1234-4abc-9def-1234567890ab",
+      "status": "EVIDENCE_GATHERING_REVIEW_DECISION"
+    }
+  }
+}

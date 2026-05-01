@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/department-of-veterans-affairs/schemas/claim.json",
+  "title": "VA Benefits Claim",
+  "description": "Status and lifecycle metadata for a Veteran benefits claim.",
+  "type": "object",
+  "required": ["id", "type", "attributes"],
+  "properties": {
+    "id": { "type": "string" },
+    "type": { "type": "string", "const": "claim" },
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "baseEndProductCode": { "type": ["string", "null"] },
+        "claimDate": { "type": ["string", "null"], "format": "date" },
+        "claimType": { "type": ["string", "null"] },
+        "claimPhaseDates": {
+          "type": "object",
+          "properties": {
+            "phaseChangeDate": { "type": ["string", "null"], "format": "date" },
+            "currentPhaseBack": { "type": "boolean" },
+            "latestPhaseType": { "type": ["string", "null"] }
+          }
+        },
+        "decisionLetterSent": { "type": "boolean" },
+        "developmentLetterSent": { "type": "boolean" },
+        "documentsNeeded": { "type": "boolean" },
+        "endProductCode": { "type": ["string", "null"] },
+        "evidenceWaiverSubmitted5103": { "type": "boolean" },
+        "lighthouseId": { "type": ["string", "null"] },
+        "status": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "CLAIM_RECEIVED",
+            "INITIAL_REVIEW",
+            "EVIDENCE_GATHERING_REVIEW_DECISION",
+            "PREPARATION_FOR_NOTIFICATION",
+            "COMPLETE"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,303 @@
+openapi: 3.1.0
+info:
+  title: VA Facilities API
+  description: >-
+    The Department of Veterans Affairs Facilities API provides programmatic
+    access to information about VA medical centers, clinics, vet centers,
+    benefits offices, and cemeteries across the United States. Consumers can
+    search by location, list facilities by type, retrieve details, and access
+    services offered, operating hours, and patient-satisfaction or wait-time
+    data where published.
+  version: '1'
+  contact:
+    name: VA API Platform
+    url: https://developer.va.gov/support/contact-us
+  termsOfService: https://developer.va.gov/terms-of-service
+  license:
+    name: Creative Commons Attribution 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+externalDocs:
+  description: VA Facilities API documentation
+  url: https://developer.va.gov/explore/api/va-facilities
+servers:
+  - url: https://sandbox-api.va.gov/services/va_facilities/v1
+    description: Sandbox
+  - url: https://api.va.gov/services/va_facilities/v1
+    description: Production
+tags:
+  - name: Facilities
+    description: Search and retrieve VA facilities
+  - name: Services
+    description: Health, benefits, and other services offered at facilities
+  - name: NearbyFacilities
+    description: Locate facilities near a given address or coordinates
+security:
+  - ApiKeyAuth: []
+paths:
+  /facilities:
+    get:
+      tags: [Facilities]
+      summary: List or search VA facilities
+      description: Search VA facilities by bounding box, ids, type, services, zip, state, or visn.
+      operationId: listFacilities
+      parameters:
+        - name: bbox[]
+          in: query
+          schema:
+            type: array
+            items:
+              type: number
+            minItems: 4
+            maxItems: 4
+          description: Bounding box (lng_min, lat_min, lng_max, lat_max)
+        - name: ids
+          in: query
+          schema:
+            type: string
+          description: Comma-separated facility IDs
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: [health, benefits, cemetery, vet_center]
+        - name: services[]
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+        - name: state
+          in: query
+          schema:
+            type: string
+            pattern: ^[A-Z]{2}$
+        - name: zip
+          in: query
+          schema:
+            type: string
+            pattern: ^[0-9]{5}(-[0-9]{4})?$
+        - name: visn
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+            default: 30
+            maximum: 100
+      responses:
+        '200':
+          description: Collection of facilities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityCollection'
+  /facilities/{id}:
+    get:
+      tags: [Facilities]
+      summary: Retrieve a single VA facility
+      operationId: getFacilityById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Facility detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Facility'
+        '404':
+          description: Facility not found
+  /nearby:
+    get:
+      tags: [NearbyFacilities]
+      summary: Find facilities near an address or coordinates
+      operationId: findNearby
+      parameters:
+        - name: lat
+          in: query
+          schema:
+            type: number
+        - name: lng
+          in: query
+          schema:
+            type: number
+        - name: street_address
+          in: query
+          schema:
+            type: string
+        - name: city
+          in: query
+          schema:
+            type: string
+        - name: state
+          in: query
+          schema:
+            type: string
+        - name: zip
+          in: query
+          schema:
+            type: string
+        - name: drive_time
+          in: query
+          schema:
+            type: integer
+            enum: [10, 20, 30, 40, 50, 60, 70, 80, 90]
+      responses:
+        '200':
+          description: Nearby facilities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NearbyCollection'
+  /facilities/{id}/services:
+    get:
+      tags: [Services]
+      summary: List services offered by a facility
+      operationId: getFacilityServices
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Service list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Service'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+  schemas:
+    Facility:
+      type: object
+      required: [id, type, attributes]
+      properties:
+        id:
+          type: string
+          example: vha_688
+        type:
+          type: string
+          example: facility
+        attributes:
+          type: object
+          properties:
+            name:
+              type: string
+            facilityType:
+              type: string
+              enum: [va_health_facility, va_benefits_facility, va_cemetery, vet_center]
+            classification:
+              type: string
+            website:
+              type: string
+              format: uri
+            lat:
+              type: number
+            long:
+              type: number
+            timeZone:
+              type: string
+            address:
+              $ref: '#/components/schemas/Addresses'
+            phone:
+              $ref: '#/components/schemas/Phone'
+            hours:
+              $ref: '#/components/schemas/Hours'
+            services:
+              type: object
+            visn:
+              type: string
+    FacilityCollection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Facility'
+        meta:
+          type: object
+        links:
+          type: object
+    NearbyCollection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Facility'
+    Addresses:
+      type: object
+      properties:
+        mailing:
+          $ref: '#/components/schemas/Address'
+        physical:
+          $ref: '#/components/schemas/Address'
+    Address:
+      type: object
+      properties:
+        zip:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        address3:
+          type: string
+    Phone:
+      type: object
+      properties:
+        main:
+          type: string
+        fax:
+          type: string
+        afterHours:
+          type: string
+        patientAdvocate:
+          type: string
+        mentalHealthClinic:
+          type: string
+        enrollmentCoordinator:
+          type: string
+        pharmacy:
+          type: string
+    Hours:
+      type: object
+      additionalProperties:
+        type: string
+    Service:
+      type: object
+      properties:
+        name:
+          type: string
+        serviceId:
+          type: string
+        link:
+          type: string
+        active:
+          type: boolean

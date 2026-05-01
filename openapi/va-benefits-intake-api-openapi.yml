@@ -1,0 +1,148 @@
+openapi: 3.1.0
+info:
+  title: VA Benefits Intake API
+  description: >-
+    The Benefits Intake API allows authorized partners to digitally submit PDF
+    documents for VA benefit applications. The workflow uses an upload-location
+    model: request a presigned upload URL, PUT the document and metadata, and
+    poll the resulting GUID for processing status.
+  version: '1'
+  contact:
+    name: VA API Platform
+    url: https://developer.va.gov/support/contact-us
+externalDocs:
+  description: Benefits Intake API documentation
+  url: https://developer.va.gov/explore/api/benefits-intake
+servers:
+  - url: https://sandbox-api.va.gov/services/vba_documents/v1
+    description: Sandbox
+  - url: https://api.va.gov/services/vba_documents/v1
+    description: Production
+tags:
+  - name: UploadLocation
+    description: Request upload locations
+  - name: UploadStatus
+    description: Submission status retrieval
+security:
+  - ApiKeyAuth: []
+paths:
+  /uploads:
+    post:
+      tags: [UploadLocation]
+      summary: Request an upload location
+      operationId: createUpload
+      responses:
+        '202':
+          description: Upload location issued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadLocationResponse'
+  /uploads/{id}:
+    get:
+      tags: [UploadStatus]
+      summary: Get the status of an upload
+      operationId: getUploadStatus
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Upload status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadStatus'
+  /uploads/report:
+    post:
+      tags: [UploadStatus]
+      summary: Bulk status report for multiple GUIDs
+      operationId: bulkStatusReport
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+      responses:
+        '200':
+          description: List of statuses
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UploadStatus'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+  schemas:
+    UploadLocationResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            type:
+              type: string
+              const: document_upload
+            attributes:
+              type: object
+              properties:
+                guid:
+                  type: string
+                  format: uuid
+                location:
+                  type: string
+                  format: uri
+                status:
+                  type: string
+    UploadStatus:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            type:
+              type: string
+              const: document_upload
+            attributes:
+              type: object
+              properties:
+                guid:
+                  type: string
+                  format: uuid
+                status:
+                  type: string
+                  enum: [pending, uploaded, received, processing, success, vbms, error, expired]
+                code:
+                  type: string
+                detail:
+                  type: string
+                location:
+                  type: string
+                updated_at:
+                  type: string
+                  format: date-time

@@ -1,0 +1,145 @@
+openapi: 3.1.0
+info:
+  title: VA Forms API
+  description: >-
+    The VA Forms API provides programmatic access to the official catalog of
+    Department of Veterans Affairs forms, returning metadata, current PDF URLs,
+    revision dates, and deprecation/replacement information so partners can
+    surface up-to-date forms in their applications.
+  version: '0'
+  contact:
+    name: VA API Platform
+    url: https://developer.va.gov/support/contact-us
+  license:
+    name: Creative Commons Attribution 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+externalDocs:
+  description: VA Forms API documentation
+  url: https://developer.va.gov/explore/api/va-forms
+servers:
+  - url: https://sandbox-api.va.gov/services/va_forms/v0
+    description: Sandbox
+  - url: https://api.va.gov/services/va_forms/v0
+    description: Production
+tags:
+  - name: Forms
+    description: Search and retrieve VA forms
+security:
+  - ApiKeyAuth: []
+paths:
+  /forms:
+    get:
+      tags: [Forms]
+      summary: List VA forms
+      description: Returns the full or filtered list of VA forms.
+      operationId: listForms
+      parameters:
+        - name: query
+          in: query
+          schema:
+            type: string
+          description: Search query against form name or title
+      responses:
+        '200':
+          description: A list of VA forms
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Form'
+  /forms/{form_name}:
+    get:
+      tags: [Forms]
+      summary: Retrieve a single VA form
+      operationId: getForm
+      parameters:
+        - name: form_name
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 10-10EZ
+      responses:
+        '200':
+          description: A VA form
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Form'
+        '404':
+          description: Form not found
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+  schemas:
+    Form:
+      type: object
+      required: [id, type, attributes]
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          example: va_form
+        attributes:
+          type: object
+          properties:
+            formName:
+              type: string
+            url:
+              type: string
+              format: uri
+            title:
+              type: string
+            firstIssuedOn:
+              type: string
+              format: date
+            lastRevisionOn:
+              type: string
+              format: date
+            pages:
+              type: integer
+            sha256:
+              type: string
+            validPdf:
+              type: boolean
+            formUsage:
+              type: string
+            formToolIntro:
+              type: string
+            formToolUrl:
+              type: string
+              format: uri
+            formType:
+              type: string
+            language:
+              type: string
+            deletedAt:
+              type: string
+              format: date-time
+              nullable: true
+            relatedForms:
+              type: array
+              items:
+                type: string
+            benefitCategories:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  description:
+                    type: string
+            vaFormAdministration:
+              type: string

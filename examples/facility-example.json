@@ -1,0 +1,41 @@
+{
+  "data": {
+    "id": "vha_688",
+    "type": "facility",
+    "attributes": {
+      "name": "Washington VA Medical Center",
+      "facilityType": "va_health_facility",
+      "classification": "VA Medical Center (VAMC)",
+      "website": "https://www.va.gov/washington-dc-health-care/locations/washington-va-medical-center/",
+      "lat": 38.9311,
+      "long": -77.0114,
+      "timeZone": "America/New_York",
+      "address": {
+        "physical": {
+          "address1": "50 Irving Street, Northwest",
+          "city": "Washington",
+          "state": "DC",
+          "zip": "20422-0001"
+        },
+        "mailing": {}
+      },
+      "phone": {
+        "main": "202-745-8000",
+        "fax": "202-754-1247",
+        "mentalHealthClinic": "202-745-8000 x56013",
+        "patientAdvocate": "202-745-8588",
+        "pharmacy": "202-745-8235"
+      },
+      "hours": {
+        "monday": "24/7",
+        "tuesday": "24/7",
+        "wednesday": "24/7",
+        "thursday": "24/7",
+        "friday": "24/7",
+        "saturday": "24/7",
+        "sunday": "24/7"
+      },
+      "visn": "5"
+    }
+  }
+}

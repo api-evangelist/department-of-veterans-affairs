@@ -1,0 +1,129 @@
+openapi: 3.1.0
+info:
+  title: VA Appeals Status API
+  description: >-
+    The Appeals Status API exposes the current status, decision-review type,
+    and event history of a Veteran's appeal or higher-level review. It allows
+    Veterans and authorized representatives to track progress through the
+    appeals modernization process.
+  version: '1'
+  contact:
+    name: VA API Platform
+    url: https://developer.va.gov/support/contact-us
+externalDocs:
+  description: Appeals Status API documentation
+  url: https://developer.va.gov/explore/api/appeals-status
+servers:
+  - url: https://sandbox-api.va.gov/services/appeals/v1
+    description: Sandbox
+  - url: https://api.va.gov/services/appeals/v1
+    description: Production
+tags:
+  - name: Appeals
+    description: Appeals status and history
+security:
+  - BearerAuth: []
+paths:
+  /appeals:
+    get:
+      tags: [Appeals]
+      summary: List a Veteran's appeals
+      operationId: listAppeals
+      parameters:
+        - name: ssn
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: X-VA-Receipt-Date
+          in: header
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: List of appeals
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Appeal'
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    Appeal:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [legacyAppeal, appeal, supplementalClaim, higherLevelReview]
+        attributes:
+          type: object
+          properties:
+            appealIds:
+              type: array
+              items:
+                type: string
+            updated:
+              type: string
+              format: date-time
+            programArea:
+              type: string
+            description:
+              type: string
+            type:
+              type: string
+            aoj:
+              type: string
+              enum: [vba, vha, nca, other]
+            location:
+              type: string
+              enum: [aoj, bva]
+            status:
+              type: object
+              properties:
+                type:
+                  type: string
+                details:
+                  type: object
+            alerts:
+              type: array
+              items:
+                type: object
+            events:
+              type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                  date:
+                    type: string
+                    format: date
+            issues:
+              type: array
+              items:
+                type: object
+                properties:
+                  active:
+                    type: boolean
+                  description:
+                    type: string
+                  diagnosticCode:
+                    type: string
+                  lastAction:
+                    type: string
+                  date:
+                    type: string
+                    format: date
+            docket:
+              type: object

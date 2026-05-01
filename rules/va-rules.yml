@@ -1,0 +1,38 @@
+name: Department of Veterans Affairs API Rules
+description: >-
+  Cross-API rules and constraints governing the use of VA API Platform
+  endpoints. These reflect public access policy, data sensitivity, and known
+  rate limits.
+rules:
+  - id: api-key-required
+    description: All VA API Platform endpoints require either an apikey header (system-to-system) or an OAuth 2.0 bearer token (Veteran-authorized flows).
+    appliesTo: ["*"]
+    severity: must
+  - id: pii-minimum-necessary
+    description: Requests containing SSN, date of birth, or Veteran identifiers must be transmitted only over TLS and only for the minimum scope required by the use case.
+    appliesTo: ["va-veteran-confirmation-api", "va-benefits-claims-api", "va-clinical-health-fhir-api", "va-appeals-status-api"]
+    severity: must
+  - id: smart-on-fhir-scopes
+    description: Clinical Health API requests must use SMART-on-FHIR scopes (e.g. patient/*.read, launch/patient) and provide a refresh token for offline access.
+    appliesTo: ["va-clinical-health-fhir-api"]
+    severity: must
+  - id: claims-poa-precedence
+    description: When a current Power of Attorney is on file, claim submissions and updates must originate from that representative or be co-signed.
+    appliesTo: ["va-benefits-claims-api"]
+    severity: should
+  - id: intake-pdf-requirements
+    description: Documents submitted via the Benefits Intake API must be valid PDFs no larger than 100 MB and match the metadata declared at upload time.
+    appliesTo: ["va-benefits-intake-api"]
+    severity: must
+  - id: facilities-rate-limits
+    description: Public Facilities API consumers should respect documented rate limits and cache responses for at least 24 hours where appropriate.
+    appliesTo: ["va-facilities-api", "va-forms-api"]
+    severity: should
+  - id: deprecation-notice
+    description: APIs marked deprecated in release notes will be retired no sooner than 90 days after the announcement; consumers must migrate before the cutover date.
+    appliesTo: ["*"]
+    severity: must
+  - id: sandbox-data
+    description: Sandbox environments contain only synthetic test data; real PII must never be sent to sandbox-api.va.gov.
+    appliesTo: ["*"]
+    severity: must

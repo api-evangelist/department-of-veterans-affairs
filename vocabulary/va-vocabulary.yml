@@ -1,0 +1,70 @@
+name: Department of Veterans Affairs Vocabulary
+description: >-
+  Controlled vocabulary covering domain concepts exposed by the VA API
+  Platform: facilities, forms, benefits claims, appeals, FHIR clinical health,
+  and Veteran identity confirmation.
+namespace: https://api-evangelist.com/department-of-veterans-affairs/vocab/
+prefix: va
+terms:
+  - term: Facility
+    type: Class
+    definition: A physical Department of Veterans Affairs location offering health, benefits, memorial, or vet-center services.
+  - term: HealthFacility
+    type: Class
+    definition: VA Medical Center, community-based outpatient clinic (CBOC), or other health-care facility.
+    subClassOf: Facility
+  - term: BenefitsFacility
+    type: Class
+    definition: VA Regional Office or other benefits administration facility.
+    subClassOf: Facility
+  - term: Cemetery
+    type: Class
+    definition: National Cemetery Administration (NCA) location.
+    subClassOf: Facility
+  - term: VetCenter
+    type: Class
+    definition: Readjustment counseling and outreach facility for combat Veterans.
+    subClassOf: Facility
+  - term: Form
+    type: Class
+    definition: A standard VA form referenced by a number such as 10-10EZ or 21-526EZ.
+  - term: BenefitCategory
+    type: Class
+    definition: Top-level grouping for VA benefits (Health Care, Disability, Education, Pension, Burial, etc.).
+  - term: Service
+    type: Class
+    definition: A clinical, benefits, or administrative service offered at a facility.
+  - term: Claim
+    type: Class
+    definition: A submitted VA benefits claim moving through one of six lifecycle phases.
+  - term: ClaimPhase
+    type: Class
+    definition: A discrete phase in claim processing.
+    enum:
+      - CLAIM_RECEIVED
+      - INITIAL_REVIEW
+      - EVIDENCE_GATHERING_REVIEW_DECISION
+      - PREPARATION_FOR_NOTIFICATION
+      - COMPLETE
+      - PENDING
+  - term: Appeal
+    type: Class
+    definition: A Veteran's appeal, supplemental claim, or higher-level review under the Appeals Modernization Act.
+  - term: AgencyOfJurisdiction
+    type: Property
+    definition: The VA administration handling an appeal (vba, vha, nca, other).
+  - term: IntentToFile
+    type: Class
+    definition: A formal notice of intent to claim benefits, which preserves an effective date.
+  - term: PowerOfAttorney
+    type: Class
+    definition: An accredited representative authorized to act on a Veteran's behalf.
+  - term: VeteranConfirmation
+    type: Class
+    definition: A boolean assertion that a person is or is not a confirmed Veteran.
+  - term: VISN
+    type: Property
+    definition: Veterans Integrated Service Network, a regional grouping of VA health facilities.
+  - term: FHIRResource
+    type: Class
+    definition: An HL7 FHIR R4 clinical resource exposed via the VA Clinical Health API.

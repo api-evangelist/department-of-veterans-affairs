@@ -1,0 +1,52 @@
+name: Department of Veterans Affairs API Capabilities
+description: >-
+  Catalog of the high-level capabilities provided by the VA API Platform at
+  developer.va.gov, mapped to the supporting OpenAPI specifications and
+  authentication models.
+capabilities:
+  - id: facilities-search
+    name: Find a VA Facility
+    description: Search and locate VA medical, benefits, vet center, and cemetery facilities by location, service, or ID.
+    apis:
+      - va-facilities-api
+    auth: API key
+    consumers:
+      - Veteran-facing apps
+      - Healthcare partners
+      - Benefits navigators
+  - id: forms-catalog
+    name: Retrieve VA Forms
+    description: Look up the canonical PDF, title, and revision history of any official VA form.
+    apis:
+      - va-forms-api
+    auth: API key
+  - id: benefits-claims
+    name: Submit and Track Benefits Claims
+    description: File Form 526 disability claims, intent-to-file notices, and check claim status on behalf of Veterans.
+    apis:
+      - va-benefits-claims-api
+    auth: OAuth 2.0 (Authorization Code)
+  - id: benefits-intake
+    name: Submit PDF Benefits Documents
+    description: Upload PDF documents for benefits applications via a guided intake workflow.
+    apis:
+      - va-benefits-intake-api
+    auth: API key
+  - id: appeals-status
+    name: Track Appeal Status
+    description: Read appeal status, events, and issues for a Veteran's pending or completed appeal.
+    apis:
+      - va-appeals-status-api
+    auth: OAuth 2.0
+  - id: clinical-health-fhir
+    name: Read Clinical Health Records
+    description: Read HL7 FHIR R4 clinical resources for a Veteran via SMART-on-FHIR.
+    apis:
+      - va-clinical-health-fhir-api
+    auth: SMART-on-FHIR (OAuth 2.0)
+  - id: veteran-confirmation
+    name: Confirm Veteran Status
+    description: Confirm whether a person is a Veteran for discount programs, identity, or benefit-gating use cases.
+    apis:
+      - va-veteran-confirmation-api
+    auth: API key
