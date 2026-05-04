@@ -1,0 +1,265 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Department of Veterans Affairs (VA)
+providerId: department-of-veterans-affairs
+publisherName: Department of Veterans Affairs (VA)
+serviceCategory: API
+created: '2026-05-04'
+modified: '2026-05-04'
+tags:
+  - Federal Government
+  - Healthcare
+  - Veterans
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: FinOps framework definition for the Department of Veterans Affairs (VA) API surface. Provides
+  a FOCUS-aligned mapping for cost allocation, usage measurement, and unit-economics reporting across
+  the provider's APIs.
+principles:
+  - name: Visibility
+    description: Make API consumption costs visible to engineering, product, and finance teams in near
+      real-time.
+  - name: Allocation
+    description: Tag every chargeable API call with the consuming team, environment, application, and
+      feature so cost can be allocated.
+  - name: Optimization
+    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
+      cost per useful unit of work.
+  - name: Accountability
+    description: Establish budget owners and chargeback or showback flows for each consuming team.
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Benchmarking
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Architecting for Cloud
+      - Rate Optimization
+      - Workload Optimization
+      - Cloud Sustainability
+      - Licensing and SaaS
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - FinOps Education and Enablement
+      - Invoicing and Chargeback
+      - Onboarding Workloads
+      - Intersecting Disciplines
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  chargeFrequency: Recurring
+focusColumns:
+  ServiceName: Department of Veterans Affairs (VA)
+  ServiceCategory: Developer Tools / API
+  ProviderName: Department of Veterans Affairs (VA)
+  PublisherName: Department of Veterans Affairs (VA)
+  InvoiceIssuerName: Department of Veterans Affairs (VA)
+  PricingCategory: Usage-Based
+  PricingUnit: request
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: api_requests
+    description: Count of billable API requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+      - region
+      - consumer
+  - name: data_egress
+    description: Bytes returned over the network in API responses
+    unit: GB
+    aggregation: sum
+    dimensions:
+      - api
+      - region
+      - consumer
+  - name: compute_seconds
+    description: Server-side compute consumed by the request, where applicable
+    unit: second
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+apis:
+  - name: VA Facilities API
+    baseURL: https://api.va.gov/services/va_facilities/v1
+    tags:
+      - Facilities
+      - Health
+      - Benefits
+    serviceName: VA Facilities API
+    serviceCategory: API
+  - name: VA Forms API
+    baseURL: https://api.va.gov/services/va_forms/v0
+    tags:
+      - Forms
+    serviceName: VA Forms API
+    serviceCategory: API
+  - name: VA Benefits Claims API
+    baseURL: https://api.va.gov/services/claims/v2
+    tags:
+      - Benefits
+      - Claims
+    serviceName: VA Benefits Claims API
+    serviceCategory: API
+  - name: VA Benefits Intake API
+    baseURL: https://api.va.gov/services/vba_documents/v1
+    tags:
+      - Benefits
+      - Intake
+      - Documents
+    serviceName: VA Benefits Intake API
+    serviceCategory: API
+  - name: VA Appeals Status API
+    baseURL: https://api.va.gov/services/appeals/v1
+    tags:
+      - Appeals
+      - Status
+    serviceName: VA Appeals Status API
+    serviceCategory: API
+  - name: VA Clinical Health API (FHIR)
+    baseURL: https://api.va.gov/services/fhir/v0/r4
+    tags:
+      - Health
+      - FHIR
+      - Clinical
+    serviceName: VA Clinical Health API (FHIR)
+    serviceCategory: API
+  - name: VA Veteran Confirmation API
+    baseURL: https://api.va.gov/services/veteran_confirmation/v1
+    tags:
+      - Verification
+      - Identity
+    serviceName: VA Veteran Confirmation API
+    serviceCategory: API
+  - name: VA Address Validation API
+    baseURL: ''
+    tags:
+      - Address
+      - Validation
+    serviceName: VA Address Validation API
+    serviceCategory: API
+  - name: VA Benefits Documents API
+    baseURL: ''
+    tags:
+      - Benefits
+      - Documents
+    serviceName: VA Benefits Documents API
+    serviceCategory: API
+  - name: VA Benefits Reference Data API
+    baseURL: ''
+    tags:
+      - Reference Data
+      - Benefits
+    serviceName: VA Benefits Reference Data API
+    serviceCategory: API
+  - name: VA Community Care Eligibility API
+    baseURL: ''
+    tags:
+      - Health
+      - Eligibility
+    serviceName: VA Community Care Eligibility API
+    serviceCategory: API
+  - name: VA Decision Reviews API
+    baseURL: ''
+    tags:
+      - Appeals
+      - Decision Reviews
+    serviceName: VA Decision Reviews API
+    serviceCategory: API
+  - name: VA Direct Deposit Management API
+    baseURL: ''
+    tags:
+      - Payments
+      - Direct Deposit
+    serviceName: VA Direct Deposit Management API
+    serviceCategory: API
+  - name: VA Education Benefits API
+    baseURL: ''
+    tags:
+      - Education
+      - Benefits
+    serviceName: VA Education Benefits API
+    serviceCategory: API
+  - name: VA Loan Guaranty API
+    baseURL: ''
+    tags:
+      - Loans
+      - Loan Guaranty
+    serviceName: VA Loan Guaranty API
+    serviceCategory: API
+  - name: VA Loan Review API
+    baseURL: ''
+    tags:
+      - Loans
+      - Review
+    serviceName: VA Loan Review API
+    serviceCategory: API
+  - name: VA Guaranty Remittance API
+    baseURL: ''
+    tags:
+      - Loans
+      - Payments
+    serviceName: VA Guaranty Remittance API
+    serviceCategory: API
+  - name: VA Letter Generator API
+    baseURL: ''
+    tags:
+      - Letters
+    serviceName: VA Letter Generator API
+    serviceCategory: API
+  - name: VA Patient Health API (FHIR)
+    baseURL: ''
+    tags:
+      - Health
+      - FHIR
+      - Patient
+    serviceName: VA Patient Health API (FHIR)
+    serviceCategory: API
+  - name: VA Veteran Service History and Eligibility API
+    baseURL: ''
+    tags:
+      - Service History
+      - Eligibility
+    serviceName: VA Veteran Service History and Eligibility API
+    serviceCategory: API
+unitEconomics:
+  - name: Cost per 1K Requests
+    metric: billed_cost / (api_requests / 1000)
+    target: TBD
+  - name: Cost per Active Consumer
+    metric: billed_cost / active_consumers
+    target: TBD
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
