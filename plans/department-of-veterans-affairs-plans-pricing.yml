@@ -4,231 +4,67 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Department of Veterans Affairs (VA)
 providerId: department-of-veterans-affairs
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - Federal Government
   - Healthcare
   - Veterans
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+description: The VA API Platform (developer.va.gov, the Lighthouse program) is operated as a public-sector
+  developer platform with no published commercial pricing. Access is free for both sandbox and production,
+  but production access requires an onboarding application that includes terms-of-service review, security
+  attestations, and (for clinical/PII APIs such as Benefits Claims and FHIR) Veteran-data-use approval.
+  There are no paid tiers; differentiation is between sandbox (mock-data) and production (live VA data)
+  environments.
+sources:
+  - https://developer.va.gov/explore
+  - https://developer.va.gov/onboarding/request-prod-access
+  - https://developer.va.gov/onboarding/request-sandbox-access
+  - https://developer.va.gov/production-access/working-with-va-apis
+notes: VA APIs are free of charge. The "plans" below model the access stages (sandbox vs. production)
+  rather than commercial tiers; entries reference the documented 60 requests/minute throttle.
 plans:
-  - id: department-of-veterans-affairs-free
-    name: Free
+  - id: department-of-veterans-affairs-sandbox
+    name: Sandbox
     type: freemium
-    description: Free entry tier for the Department of Veterans Affairs (VA) API surface. Intended for
-      evaluation, prototyping, and low-volume integrations. Real limits and pricing must be reconciled
-      with the provider's published plan documentation.
+    description: Self-service sandbox access against mock data for prototyping and testing.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.va.gov/services/va_facilities/v1
-          - https://api.va.gov/services/va_forms/v0
-          - https://api.va.gov/services/claims/v2
-          - https://api.va.gov/services/vba_documents/v1
-          - https://api.va.gov/services/appeals/v1
-          - https://api.va.gov/services/fhir/v0/r4
-          - https://api.va.gov/services/veteran_confirmation/v1
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
+      - label: Sandbox API requests
+        name: sandbox_requests
         type: rate
         metric: requests_per_minute
-        limit: 10
+        limit: 60
         timeFrame: minute
-        geo: global
-        domains:
-          - https://api.va.gov/services/va_facilities/v1
-          - https://api.va.gov/services/va_forms/v0
-          - https://api.va.gov/services/claims/v2
-          - https://api.va.gov/services/vba_documents/v1
-          - https://api.va.gov/services/appeals/v1
-          - https://api.va.gov/services/fhir/v0/r4
-          - https://api.va.gov/services/veteran_confirmation/v1
+        geo: US
         unit: 1
         price: '0.00'
         userMultiplied: false
     elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: VA Facilities API
-      - name: VA Forms API
-      - name: VA Benefits Claims API
-      - name: VA Benefits Intake API
-      - name: VA Appeals Status API
-      - name: VA Clinical Health API (FHIR)
-      - name: VA Veteran Confirmation API
-      - name: VA Address Validation API
-  - id: department-of-veterans-affairs-pro
-    name: Professional
-    type: paid
-    description: Production tier for Department of Veterans Affairs (VA). Provides higher quotas, priority
-      support, and access to the broader API portfolio. Pricing placeholder; align with the provider's
-      pricing page.
+      - name: Mock-data sandbox at sandbox-api.va.gov
+      - name: Self-service API key issuance
+      - name: Public documentation
+      - name: All catalog APIs (Facilities, Forms, Claims, Intake, Appeals, FHIR, Veteran Confirmation, etc.)
+  - id: department-of-veterans-affairs-production
+    name: Production
+    type: freemium
+    description: Live VA data access. Requires production-access application reviewed by the VA Lighthouse
+      team; clinical/PII APIs require additional Veteran-data-use approval.
     entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.va.gov/services/va_facilities/v1
-          - https://api.va.gov/services/va_forms/v0
-          - https://api.va.gov/services/claims/v2
-          - https://api.va.gov/services/vba_documents/v1
-          - https://api.va.gov/services/appeals/v1
-          - https://api.va.gov/services/fhir/v0/r4
-          - https://api.va.gov/services/veteran_confirmation/v1
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
+      - label: Production API requests
+        name: production_requests
         type: rate
         metric: requests_per_minute
-        limit: 100
+        limit: 60
         timeFrame: minute
-        geo: global
-        domains:
-          - https://api.va.gov/services/va_facilities/v1
-          - https://api.va.gov/services/va_forms/v0
-          - https://api.va.gov/services/claims/v2
-          - https://api.va.gov/services/vba_documents/v1
-          - https://api.va.gov/services/appeals/v1
-          - https://api.va.gov/services/fhir/v0/r4
-          - https://api.va.gov/services/veteran_confirmation/v1
+        geo: US
         unit: 1
         price: '0.00'
         userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.va.gov/services/va_facilities/v1
-          - https://api.va.gov/services/va_forms/v0
-          - https://api.va.gov/services/claims/v2
-          - https://api.va.gov/services/vba_documents/v1
-          - https://api.va.gov/services/appeals/v1
-          - https://api.va.gov/services/fhir/v0/r4
-          - https://api.va.gov/services/veteran_confirmation/v1
-        unit: 1000
-        price: TBD
-        userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: VA Facilities API
-      - name: VA Forms API
-      - name: VA Benefits Claims API
-      - name: VA Benefits Intake API
-      - name: VA Appeals Status API
-      - name: VA Clinical Health API (FHIR)
-      - name: VA Veteran Confirmation API
-      - name: VA Address Validation API
-      - name: VA Benefits Documents API
-      - name: VA Benefits Reference Data API
-      - name: VA Community Care Eligibility API
-      - name: VA Decision Reviews API
-      - name: VA Direct Deposit Management API
-      - name: VA Education Benefits API
-      - name: VA Loan Guaranty API
-      - name: VA Loan Review API
-      - name: VA Guaranty Remittance API
-      - name: VA Letter Generator API
-      - name: VA Patient Health API (FHIR)
-      - name: VA Veteran Service History and Eligibility API
-  - id: department-of-veterans-affairs-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Department of Veterans Affairs (VA). Includes dedicated capacity,
-      contractual SLAs, security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://api.va.gov/services/va_facilities/v1
-          - https://api.va.gov/services/va_forms/v0
-          - https://api.va.gov/services/claims/v2
-          - https://api.va.gov/services/vba_documents/v1
-          - https://api.va.gov/services/appeals/v1
-          - https://api.va.gov/services/fhir/v0/r4
-          - https://api.va.gov/services/veteran_confirmation/v1
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://api.va.gov/services/va_facilities/v1
-          - https://api.va.gov/services/va_forms/v0
-          - https://api.va.gov/services/claims/v2
-          - https://api.va.gov/services/vba_documents/v1
-          - https://api.va.gov/services/appeals/v1
-          - https://api.va.gov/services/fhir/v0/r4
-          - https://api.va.gov/services/veteran_confirmation/v1
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: VA Facilities API
-      - name: VA Forms API
-      - name: VA Benefits Claims API
-      - name: VA Benefits Intake API
-      - name: VA Appeals Status API
-      - name: VA Clinical Health API (FHIR)
-      - name: VA Veteran Confirmation API
-      - name: VA Address Validation API
-      - name: VA Benefits Documents API
-      - name: VA Benefits Reference Data API
-      - name: VA Community Care Eligibility API
-      - name: VA Decision Reviews API
-      - name: VA Direct Deposit Management API
-      - name: VA Education Benefits API
-      - name: VA Loan Guaranty API
-      - name: VA Loan Review API
-      - name: VA Guaranty Remittance API
-      - name: VA Letter Generator API
-      - name: VA Patient Health API (FHIR)
-      - name: VA Veteran Service History and Eligibility API
+      - name: Live data at api.va.gov
+      - name: Production access onboarding review
+      - name: Email support via api@va.gov
+      - name: Rate-limit increases case-by-case via support
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
