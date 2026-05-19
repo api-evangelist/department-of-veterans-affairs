@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: VA Benefits Claims API — Power of Attorney
+  description: 'VA Benefits Claims API — Power of Attorney. 1 operations. Lead operation: Get current POA for a Veteran. Self-contained
+    Naftiko capability covering one Department Of Veterans Affairs business surface.'
+  tags:
+  - Department Of Veterans Affairs
+  - Power of Attorney
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DEPARTMENT_OF_VETERANS_AFFAIRS_API_KEY: DEPARTMENT_OF_VETERANS_AFFAIRS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: va-benefits-claims-power-of-attorney
+    baseUri: https://sandbox-api.va.gov/services/claims/v2
+    description: VA Benefits Claims API — Power of Attorney business capability. Self-contained, no shared references.
+    resources:
+    - name: veterans-veteranId-power-of-attorney
+      path: /veterans/{veteranId}/power-of-attorney
+      operations:
+      - name: getpoa
+        method: GET
+        description: Get current POA for a Veteran
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: veteranId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.DEPARTMENT_OF_VETERANS_AFFAIRS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: va-benefits-claims-power-of-attorney-rest
+    port: 8080
+    description: REST adapter for VA Benefits Claims API — Power of Attorney. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/veterans/{veteranid}/power-of-attorney
+      name: veterans-veteranid-power-of-attorney
+      description: REST surface for veterans-veteranId-power-of-attorney.
+      operations:
+      - method: GET
+        name: getpoa
+        description: Get current POA for a Veteran
+        call: va-benefits-claims-power-of-attorney.getpoa
+        with:
+          veteranId: rest.veteranId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: va-benefits-claims-power-of-attorney-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for VA Benefits Claims API — Power of Attorney. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-current-poa-veteran
+      description: Get current POA for a Veteran
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: va-benefits-claims-power-of-attorney.getpoa
+      with:
+        veteranId: tools.veteranId
+      outputParameters:
+      - type: object
+        mapping: $.

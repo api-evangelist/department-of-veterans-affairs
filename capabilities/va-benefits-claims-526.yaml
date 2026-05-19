@@ -1,0 +1,86 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: VA Benefits Claims API — 526
+  description: 'VA Benefits Claims API — 526. 1 operations. Lead operation: Submit a Form 526 disability compensation claim.
+    Self-contained Naftiko capability covering one Department Of Veterans Affairs business surface.'
+  tags:
+  - Department Of Veterans Affairs
+  - '526'
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DEPARTMENT_OF_VETERANS_AFFAIRS_API_KEY: DEPARTMENT_OF_VETERANS_AFFAIRS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: va-benefits-claims-526
+    baseUri: https://sandbox-api.va.gov/services/claims/v2
+    description: VA Benefits Claims API — 526 business capability. Self-contained, no shared references.
+    resources:
+    - name: veterans-veteranId-526
+      path: /veterans/{veteranId}/526
+      operations:
+      - name: submit526
+        method: POST
+        description: Submit a Form 526 disability compensation claim
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: veteranId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.DEPARTMENT_OF_VETERANS_AFFAIRS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: va-benefits-claims-526-rest
+    port: 8080
+    description: REST adapter for VA Benefits Claims API — 526. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/veterans/{veteranid}/526
+      name: veterans-veteranid-526
+      description: REST surface for veterans-veteranId-526.
+      operations:
+      - method: POST
+        name: submit526
+        description: Submit a Form 526 disability compensation claim
+        call: va-benefits-claims-526.submit526
+        with:
+          veteranId: rest.veteranId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: va-benefits-claims-526-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for VA Benefits Claims API — 526. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: submit-form-526-disability-compensation
+      description: Submit a Form 526 disability compensation claim
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: va-benefits-claims-526.submit526
+      with:
+        veteranId: tools.veteranId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

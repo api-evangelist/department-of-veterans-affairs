@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: VA Clinical Health API (FHIR) — MedicationRequest
+  description: 'VA Clinical Health API (FHIR) — MedicationRequest. 1 operations. Lead operation: Search MedicationRequest
+    resources. Self-contained Naftiko capability covering one Department Of Veterans Affairs business surface.'
+  tags:
+  - Department Of Veterans Affairs
+  - MedicationRequest
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DEPARTMENT_OF_VETERANS_AFFAIRS_API_KEY: DEPARTMENT_OF_VETERANS_AFFAIRS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: va-clinical-health-fhir-medicationrequest
+    baseUri: https://sandbox-api.va.gov/services/fhir/v0/r4
+    description: VA Clinical Health API (FHIR) — MedicationRequest business capability. Self-contained, no shared references.
+    resources:
+    - name: MedicationRequest
+      path: /MedicationRequest
+      operations:
+      - name: searchmedicationrequests
+        method: GET
+        description: Search MedicationRequest resources
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: patient
+          in: query
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.DEPARTMENT_OF_VETERANS_AFFAIRS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: va-clinical-health-fhir-medicationrequest-rest
+    port: 8080
+    description: REST adapter for VA Clinical Health API (FHIR) — MedicationRequest. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/medicationrequest
+      name: medicationrequest
+      description: REST surface for MedicationRequest.
+      operations:
+      - method: GET
+        name: searchmedicationrequests
+        description: Search MedicationRequest resources
+        call: va-clinical-health-fhir-medicationrequest.searchmedicationrequests
+        with:
+          patient: rest.patient
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: va-clinical-health-fhir-medicationrequest-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for VA Clinical Health API (FHIR) — MedicationRequest. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: search-medicationrequest-resources
+      description: Search MedicationRequest resources
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: va-clinical-health-fhir-medicationrequest.searchmedicationrequests
+      with:
+        patient: tools.patient
+      outputParameters:
+      - type: object
+        mapping: $.

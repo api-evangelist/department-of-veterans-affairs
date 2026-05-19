@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: VA Benefits Intake API — UploadLocation
+  description: 'VA Benefits Intake API — UploadLocation. 1 operations. Lead operation: Request an upload location. Self-contained
+    Naftiko capability covering one Department Of Veterans Affairs business surface.'
+  tags:
+  - Department Of Veterans Affairs
+  - UploadLocation
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DEPARTMENT_OF_VETERANS_AFFAIRS_API_KEY: DEPARTMENT_OF_VETERANS_AFFAIRS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: va-benefits-intake-uploadlocation
+    baseUri: https://sandbox-api.va.gov/services/vba_documents/v1
+    description: VA Benefits Intake API — UploadLocation business capability. Self-contained, no shared references.
+    resources:
+    - name: uploads
+      path: /uploads
+      operations:
+      - name: createupload
+        method: POST
+        description: Request an upload location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: apikey
+      value: '{{env.DEPARTMENT_OF_VETERANS_AFFAIRS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: va-benefits-intake-uploadlocation-rest
+    port: 8080
+    description: REST adapter for VA Benefits Intake API — UploadLocation. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/uploads
+      name: uploads
+      description: REST surface for uploads.
+      operations:
+      - method: POST
+        name: createupload
+        description: Request an upload location
+        call: va-benefits-intake-uploadlocation.createupload
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: va-benefits-intake-uploadlocation-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for VA Benefits Intake API — UploadLocation. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: request-upload-location
+      description: Request an upload location
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: va-benefits-intake-uploadlocation.createupload
+      outputParameters:
+      - type: object
+        mapping: $.
