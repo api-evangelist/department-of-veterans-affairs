@@ -1,0 +1,140 @@
+{
+  "item": [
+    {
+      "id": "21a0e4ff-2aab-459e-a7c6-6d276c472fbd",
+      "name": "Appeals",
+      "description": {
+        "content": "Appeals status and history",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9d406665-e533-49fd-862a-26b297c34753",
+          "name": "List a Veteran's appeals",
+          "request": {
+            "name": "List a Veteran's appeals",
+            "description": {},
+            "url": {
+              "path": [
+                "appeals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "ssn",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "key": "X-VA-Receipt-Date",
+                "value": "<date>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4f6a090-a8ba-4fef-9aa0-c263f79c77e8",
+              "name": "List of appeals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "appeals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "ssn",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-VA-Receipt-Date",
+                    "value": "<date>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"legacyAppeal\",\n      \"attributes\": {\n        \"appealIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"updated\": \"2025-11-02T07:36:13.923Z\",\n        \"programArea\": \"string\",\n        \"description\": \"string\",\n        \"type\": \"string\",\n        \"aoj\": \"other\",\n        \"location\": \"aoj\",\n        \"status\": {\n          \"type\": \"string\",\n          \"details\": {}\n        },\n        \"events\": [\n          {\n            \"type\": \"string\",\n            \"date\": \"2014-12-11\"\n          },\n          {\n            \"type\": \"string\",\n            \"date\": \"1957-07-10\"\n          }\n        ],\n        \"issues\": [\n          {\n            \"active\": false,\n            \"description\": \"string\",\n            \"diagnosticCode\": \"string\",\n            \"lastAction\": \"string\",\n            \"date\": \"1964-06-29\"\n          },\n          {\n            \"active\": true,\n            \"description\": \"string\",\n            \"diagnosticCode\": \"string\",\n            \"lastAction\": \"string\",\n            \"date\": \"1986-01-14\"\n          }\n        ],\n        \"docket\": {}\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"higherLevelReview\",\n      \"attributes\": {\n        \"appealIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"updated\": \"1958-05-12T16:19:31.774Z\",\n        \"programArea\": \"string\",\n        \"description\": \"string\",\n        \"type\": \"string\",\n        \"aoj\": \"other\",\n        \"location\": \"aoj\",\n        \"status\": {\n          \"type\": \"string\",\n          \"details\": {}\n        },\n        \"events\": [\n          {\n            \"type\": \"string\",\n            \"date\": \"2020-01-25\"\n          },\n          {\n            \"type\": \"string\",\n            \"date\": \"1962-05-21\"\n          }\n        ],\n        \"issues\": [\n          {\n            \"active\": false,\n            \"description\": \"string\",\n            \"diagnosticCode\": \"string\",\n            \"lastAction\": \"string\",\n            \"date\": \"1969-09-20\"\n          },\n          {\n            \"active\": false,\n            \"description\": \"string\",\n            \"diagnosticCode\": \"string\",\n            \"lastAction\": \"string\",\n            \"date\": \"1984-09-15\"\n          }\n        ],\n        \"docket\": {}\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox-api.va.gov/services/appeals/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dcdcd84e-94c0-4f0c-86bd-38edd6d8ae8a",
+    "name": "VA Appeals Status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.\n\nContact Support:\n Name: VA API Platform",
+      "type": "text/plain"
+    }
+  }
+}

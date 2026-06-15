@@ -1,0 +1,591 @@
+{
+  "item": [
+    {
+      "id": "27ba91e6-e0ba-496f-ba9b-d3dbeca9e88f",
+      "name": "526",
+      "description": {
+        "content": "Disability compensation (Form 526) submissions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0e19ffa1-3645-4350-9f47-b959c0f55347",
+          "name": "Submit a Form 526 disability compensation claim",
+          "request": {
+            "name": "Submit a Form 526 disability compensation claim",
+            "description": {},
+            "url": {
+              "path": [
+                "veterans",
+                ":veteranId",
+                "526"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "veteranId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"claimantCertification\": \"<boolean>\",\n      \"veteranIdentification\": \"<object>\",\n      \"disabilities\": [\n        {\n          \"name\": \"<string>\",\n          \"disabilityActionType\": \"<string>\",\n          \"classificationCode\": \"<string>\",\n          \"diagnosticCode\": \"<integer>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"disabilityActionType\": \"<string>\",\n          \"classificationCode\": \"<string>\",\n          \"diagnosticCode\": \"<integer>\"\n        }\n      ],\n      \"serviceInformation\": \"<object>\",\n      \"directDeposit\": \"<object>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1ba8aaad-e52c-4139-ab3e-94f3d4ff0850",
+              "name": "Submission accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veterans",
+                    ":veteranId",
+                    "526"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "veteranId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"claimantCertification\": \"<boolean>\",\n      \"veteranIdentification\": \"<object>\",\n      \"disabilities\": [\n        {\n          \"name\": \"<string>\",\n          \"disabilityActionType\": \"<string>\",\n          \"classificationCode\": \"<string>\",\n          \"diagnosticCode\": \"<integer>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"disabilityActionType\": \"<string>\",\n          \"classificationCode\": \"<string>\",\n          \"diagnosticCode\": \"<integer>\"\n        }\n      ],\n      \"serviceInformation\": \"<object>\",\n      \"directDeposit\": \"<object>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f22a71aa-acd7-4db4-8219-ec502b8e40c2",
+      "name": "Claims",
+      "description": {
+        "content": "Veteran benefits claims operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ce91edc6-e6ba-4776-a621-d7716966164f",
+          "name": "List a Veteran's claims",
+          "request": {
+            "name": "List a Veteran's claims",
+            "description": {},
+            "url": {
+              "path": [
+                "veterans",
+                ":veteranId",
+                "claims"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "veteranId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69c24071-965a-4ea5-a9cc-757406d39a6d",
+              "name": "Claims list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veterans",
+                    ":veteranId",
+                    "claims"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "veteranId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"claim\",\n      \"attributes\": {\n        \"baseEndProductCode\": \"string\",\n        \"claimDate\": \"1959-07-29\",\n        \"claimType\": \"string\",\n        \"claimPhaseDates\": {},\n        \"decisionLetterSent\": true,\n        \"developmentLetterSent\": true,\n        \"documentsNeeded\": false,\n        \"endProductCode\": \"string\",\n        \"evidenceWaiverSubmitted5103\": true,\n        \"lighthouseId\": \"string\",\n        \"status\": \"COMPLETE\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"claim\",\n      \"attributes\": {\n        \"baseEndProductCode\": \"string\",\n        \"claimDate\": \"1992-07-05\",\n        \"claimType\": \"string\",\n        \"claimPhaseDates\": {},\n        \"decisionLetterSent\": false,\n        \"developmentLetterSent\": true,\n        \"documentsNeeded\": true,\n        \"endProductCode\": \"string\",\n        \"evidenceWaiverSubmitted5103\": false,\n        \"lighthouseId\": \"string\",\n        \"status\": \"INITIAL_REVIEW\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3117a5e-db6d-4a42-a480-a0843f988eec",
+          "name": "Retrieve a single claim",
+          "request": {
+            "name": "Retrieve a single claim",
+            "description": {},
+            "url": {
+              "path": [
+                "veterans",
+                ":veteranId",
+                "claims",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "veteranId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f72e143-177e-44b1-bdeb-840ef4d3710b",
+              "name": "Claim",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veterans",
+                    ":veteranId",
+                    "claims",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "veteranId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"claim\",\n  \"attributes\": {\n    \"baseEndProductCode\": \"string\",\n    \"claimDate\": \"2009-08-08\",\n    \"claimType\": \"string\",\n    \"claimPhaseDates\": {},\n    \"decisionLetterSent\": false,\n    \"developmentLetterSent\": true,\n    \"documentsNeeded\": true,\n    \"endProductCode\": \"string\",\n    \"evidenceWaiverSubmitted5103\": false,\n    \"lighthouseId\": \"string\",\n    \"status\": \"EVIDENCE_GATHERING_REVIEW_DECISION\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3501db41-913a-4209-a896-9546a0a99f3d",
+      "name": "Intent To File",
+      "description": {
+        "content": "Intent to File operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9a82fcc0-efae-4ff7-ba25-c6284c0c3369",
+          "name": "Submit an Intent to File",
+          "request": {
+            "name": "Submit an Intent to File",
+            "description": {},
+            "url": {
+              "path": [
+                "veterans",
+                ":veteranId",
+                "intent-to-file"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "veteranId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"type\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a1a78853-e635-43a4-837d-bb0bcc29131d",
+              "name": "Intent recorded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veterans",
+                    ":veteranId",
+                    "intent-to-file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "veteranId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"type\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "887997af-4c9f-47e0-a7a1-946d981bfccf",
+      "name": "Power of Attorney",
+      "description": {
+        "content": "Representation requests and POA management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "261a98e8-6b1d-4e1d-81be-467f61e7002b",
+          "name": "Get current POA for a Veteran",
+          "request": {
+            "name": "Get current POA for a Veteran",
+            "description": {},
+            "url": {
+              "path": [
+                "veterans",
+                ":veteranId",
+                "power-of-attorney"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "veteranId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b281a71a-f256-4c91-8915-4f136ba45c34",
+              "name": "Current POA",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veterans",
+                    ":veteranId",
+                    "power-of-attorney"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "veteranId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"type\": \"string\",\n    \"attributes\": {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"type\": \"individual\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox-api.va.gov/services/claims/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "71a08027-7f87-4819-810c-73ce6b2eac6d",
+    "name": "VA Benefits Claims API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Benefits Claims API allows authorized partners to submit, track, and retrieve VA benefits claims on behalf of Veterans, accredited representatives, and Veteran Service Organizations.\n\nContact Support:\n Name: VA API Platform",
+      "type": "text/plain"
+    }
+  }
+}

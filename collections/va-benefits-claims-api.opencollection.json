@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VA Benefits Claims API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Claims",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List a Veteran's claims",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox-api.va.gov/services/claims/v2/veterans/:veteranId/claims",
+            "params": [
+              {
+                "name": "veteranId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a Veteran's claims"
+        },
+        {
+          "info": {
+            "name": "Retrieve a single claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox-api.va.gov/services/claims/v2/veterans/:veteranId/claims/:id",
+            "params": [
+              {
+                "name": "veteranId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single claim"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": 526,
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit a Form 526 disability compensation claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox-api.va.gov/services/claims/v2/veterans/:veteranId/526",
+            "params": [
+              {
+                "name": "veteranId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a Form 526 disability compensation claim"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Intent To File",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit an Intent to File",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox-api.va.gov/services/claims/v2/veterans/:veteranId/intent-to-file",
+            "params": [
+              {
+                "name": "veteranId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit an Intent to File"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Power of Attorney",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get current POA for a Veteran",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox-api.va.gov/services/claims/v2/veterans/:veteranId/power-of-attorney",
+            "params": [
+              {
+                "name": "veteranId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get current POA for a Veteran"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

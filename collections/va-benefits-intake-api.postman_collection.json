@@ -1,0 +1,326 @@
+{
+  "item": [
+    {
+      "id": "0f5db774-e030-47de-95d9-1c52745124a6",
+      "name": "UploadLocation",
+      "description": {
+        "content": "Request upload locations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "54301276-2af9-4570-8d29-7b93a6ada95c",
+          "name": "Request an upload location",
+          "request": {
+            "name": "Request an upload location",
+            "description": {},
+            "url": {
+              "path": [
+                "uploads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0da62af1-b1d8-4579-ba11-5a5f44853d31",
+              "name": "Upload location issued",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uploads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"00784b82-3a69-ec9f-e8bb-7671615ea789\",\n    \"type\": \"string\",\n    \"attributes\": {\n      \"guid\": \"f48f7303-56f8-a953-2c7d-c41fee512b5c\",\n      \"location\": \"http://CgjDbKh.hlrlphR6n+JFKgcgRby3GGjzW2a-MHkW\",\n      \"status\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "86745430-6a49-40ea-9f48-706847552f36",
+      "name": "UploadStatus",
+      "description": {
+        "content": "Submission status retrieval",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "315e7925-f917-4dc9-8a6d-0f2e77d56254",
+          "name": "Get the status of an upload",
+          "request": {
+            "name": "Get the status of an upload",
+            "description": {},
+            "url": {
+              "path": [
+                "uploads",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0c620f81-aa6a-4751-91d7-12c2a97022e6",
+              "name": "Upload status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uploads",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"43c490af-6cf2-497e-fc98-34920671140b\",\n    \"type\": \"string\",\n    \"attributes\": {\n      \"guid\": \"b9026e59-b113-5a90-bca1-f40333e577af\",\n      \"status\": \"expired\",\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"location\": \"string\",\n      \"updated_at\": \"1971-10-26T07:42:12.475Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c70f379a-b612-4832-9640-5f01f1161fdb",
+          "name": "Bulk status report for multiple GUIDs",
+          "request": {
+            "name": "Bulk status report for multiple GUIDs",
+            "description": {},
+            "url": {
+              "path": [
+                "uploads",
+                "report"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a1eb8a58-ce01-4d8b-8e0e-6d86f164f055",
+              "name": "List of statuses",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uploads",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"data\": {\n        \"id\": \"46554445-9d1b-b62b-ce8e-70e2d96ed31a\",\n        \"type\": \"string\",\n        \"attributes\": {\n          \"guid\": \"91f022c6-9a7f-c231-fed7-34c8eba23742\",\n          \"status\": \"received\",\n          \"code\": \"string\",\n          \"detail\": \"string\",\n          \"location\": \"string\",\n          \"updated_at\": \"1951-11-16T07:08:57.131Z\"\n        }\n      }\n    },\n    {\n      \"data\": {\n        \"id\": \"47ae6685-7cfc-f47d-036f-22fa1e05e3bd\",\n        \"type\": \"string\",\n        \"attributes\": {\n          \"guid\": \"a71076b2-4163-194b-281d-951a44b9d6b4\",\n          \"status\": \"pending\",\n          \"code\": \"string\",\n          \"detail\": \"string\",\n          \"location\": \"string\",\n          \"updated_at\": \"1997-05-30T18:38:15.119Z\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox-api.va.gov/services/vba_documents/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a21e8556-c54d-4c88-a577-0463b0143bc9",
+    "name": "VA Benefits Intake API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Benefits Intake API allows authorized partners to digitally submit PDF documents for VA benefit applications. The workflow uses an upload-location model: request a presigned upload URL, PUT the document and metadata, and poll the resulting GUID for processing status.\n\nContact Support:\n Name: VA API Platform",
+      "type": "text/plain"
+    }
+  }
+}

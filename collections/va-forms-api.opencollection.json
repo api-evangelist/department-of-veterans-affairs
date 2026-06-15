@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VA Forms API",
+    "version": "0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Forms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List VA forms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox-api.va.gov/services/va_forms/v0/forms",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search query against form name or title"
+              }
+            ]
+          },
+          "docs": "Returns the full or filtered list of VA forms."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single VA form",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox-api.va.gov/services/va_forms/v0/forms/:form_name",
+            "params": [
+              {
+                "name": "form_name",
+                "value": "10-10EZ",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single VA form"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
