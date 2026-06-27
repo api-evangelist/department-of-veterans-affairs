@@ -29,7 +29,7 @@ common:
   - url: https://developer.va.gov/support/contact-us
     type: Support
   - url: https://developer.va.gov/onboarding
-    type: Onboarding
+    type: GettingStarted
 apis:
   - aid: department-of-veterans-affairs:va-facilities-api
     name: VA Facilities API
@@ -49,7 +49,7 @@ apis:
         url: openapi/va-facilities-api-openapi.yml
       - type: JSONSchema
         url: json-schema/va-facility-schema.json
-      - type: Example
+      - type: Examples
         url: examples/facility-example.json
       - type: Sandbox
         url: https://developer.va.gov/explore/api/va-facilities/sandbox-access
@@ -69,7 +69,7 @@ apis:
         url: openapi/va-forms-api-openapi.yml
       - type: JSONSchema
         url: json-schema/va-form-schema.json
-      - type: Example
+      - type: Examples
         url: examples/form-example.json
       - type: Sandbox
         url: https://developer.va.gov/explore/api/va-forms/sandbox-access
@@ -90,7 +90,7 @@ apis:
         url: openapi/va-benefits-claims-api-openapi.yml
       - type: JSONSchema
         url: json-schema/va-claim-schema.json
-      - type: Example
+      - type: Examples
         url: examples/claim-example.json
       - type: Authentication
         url: https://developer.va.gov/explore/api/benefits-claims/authorization-code
