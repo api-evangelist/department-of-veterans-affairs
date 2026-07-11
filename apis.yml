@@ -18,6 +18,8 @@ tags:
   - Healthcare
   - Veterans
 common:
+  - type: OAuthScopes
+    url: scopes/department-of-veterans-affairs-scopes.yml
   - type: GitHubOrganization
     url: https://github.com/department-of-veterans-affairs
   - type: LinkedIn
@@ -30,6 +32,8 @@ common:
     type: Support
   - url: https://developer.va.gov/onboarding
     type: GettingStarted
+  - url: https://news.va.gov/feed/
+    type: Blog
 apis:
   - aid: department-of-veterans-affairs:va-facilities-api
     name: VA Facilities API

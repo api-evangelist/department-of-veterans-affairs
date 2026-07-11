@@ -1,0 +1,29 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/va-clinical-health-fhir-api-openapi.yml
+schemes:
+- name: SmartOnFhir
+  source: openapi/va-clinical-health-fhir-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://sandbox-api.va.gov/oauth2/health/v1/authorization
+    tokenUrl: https://sandbox-api.va.gov/oauth2/health/v1/token
+scopes:
+- scope: launch/patient
+  description: Patient context launch
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/va-clinical-health-fhir-api-openapi.yml
+- scope: offline_access
+  description: Refresh tokens
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/va-clinical-health-fhir-api-openapi.yml
+- scope: patient/*.read
+  description: Read patient-scoped resources
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/va-clinical-health-fhir-api-openapi.yml
