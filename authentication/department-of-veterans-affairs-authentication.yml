@@ -1,0 +1,39 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/va-appeals-status-api-openapi.yml, openapi/va-benefits-claims-api-openapi.yml,
+  openapi/va-benefits-intake-api-openapi.yml, openapi/va-clinical-health-fhir-api-openapi.yml,
+  openapi/va-facilities-api-openapi.yml, openapi/va-forms-api-openapi.yml, openapi/va-veteran-confirmation-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  - oauth2
+  api_key_in:
+  - header
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/va-appeals-status-api-openapi.yml
+  - openapi/va-benefits-claims-api-openapi.yml
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: apikey
+  sources:
+  - openapi/va-benefits-intake-api-openapi.yml
+  - openapi/va-facilities-api-openapi.yml
+  - openapi/va-forms-api-openapi.yml
+  - openapi/va-veteran-confirmation-api-openapi.yml
+- name: SmartOnFhir
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://sandbox-api.va.gov/oauth2/health/v1/authorization
+    tokenUrl: https://sandbox-api.va.gov/oauth2/health/v1/token
+    scopes: 3
+  sources:
+  - openapi/va-clinical-health-fhir-api-openapi.yml

@@ -18,6 +18,12 @@ tags:
   - Healthcare
   - Veterans
 common:
+  - type: VulnerabilityDisclosure
+    url: security/department-of-veterans-affairs-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/department-of-veterans-affairs-domain-security.yml
+  - type: Authentication
+    url: authentication/department-of-veterans-affairs-authentication.yml
   - type: OAuthScopes
     url: scopes/department-of-veterans-affairs-scopes.yml
   - type: GitHubOrganization
