@@ -18,6 +18,8 @@ tags:
   - Healthcare
   - Veterans
 common:
+  - type: AgenticAccess
+    url: agentic-access/department-of-veterans-affairs-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/department-of-veterans-affairs-vulnerability-disclosure.yml
   - type: DomainSecurity
