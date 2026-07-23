@@ -1,0 +1,218 @@
+openapi: 3.1.0
+info:
+  title: VA Appeals Status AllergyIntolerance Facilities API
+  description: The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.
+  version: '1'
+  contact:
+    name: VA API Platform
+    url: https://developer.va.gov/support/contact-us
+servers:
+- url: https://sandbox-api.va.gov/services/appeals/v1
+  description: Sandbox
+- url: https://api.va.gov/services/appeals/v1
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Facilities
+  description: Search and retrieve VA facilities
+paths:
+  /facilities:
+    get:
+      tags:
+      - Facilities
+      summary: List or search VA facilities
+      description: Search VA facilities by bounding box, ids, type, services, zip, state, or visn.
+      operationId: listFacilities
+      parameters:
+      - name: bbox[]
+        in: query
+        schema:
+          type: array
+          items:
+            type: number
+          minItems: 4
+          maxItems: 4
+        description: Bounding box (lng_min, lat_min, lng_max, lat_max)
+      - name: ids
+        in: query
+        schema:
+          type: string
+        description: Comma-separated facility IDs
+      - name: type
+        in: query
+        schema:
+          type: string
+          enum:
+          - health
+          - benefits
+          - cemetery
+          - vet_center
+      - name: services[]
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: state
+        in: query
+        schema:
+          type: string
+          pattern: ^[A-Z]{2}$
+      - name: zip
+        in: query
+        schema:
+          type: string
+          pattern: ^[0-9]{5}(-[0-9]{4})?$
+      - name: visn
+        in: query
+        schema:
+          type: string
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          default: 30
+          maximum: 100
+      responses:
+        '200':
+          description: Collection of facilities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityCollection'
+  /facilities/{id}:
+    get:
+      tags:
+      - Facilities
+      summary: Retrieve a single VA facility
+      operationId: getFacilityById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Facility detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Facility'
+        '404':
+          description: Facility not found
+components:
+  schemas:
+    Address:
+      type: object
+      properties:
+        zip:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        address3:
+          type: string
+    Facility:
+      type: object
+      required:
+      - id
+      - type
+      - attributes
+      properties:
+        id:
+          type: string
+          example: vha_688
+        type:
+          type: string
+          example: facility
+        attributes:
+          type: object
+          properties:
+            name:
+              type: string
+            facilityType:
+              type: string
+              enum:
+              - va_health_facility
+              - va_benefits_facility
+              - va_cemetery
+              - vet_center
+            classification:
+              type: string
+            website:
+              type: string
+              format: uri
+            lat:
+              type: number
+            long:
+              type: number
+            timeZone:
+              type: string
+            address:
+              $ref: '#/components/schemas/Addresses'
+            phone:
+              $ref: '#/components/schemas/Phone'
+            hours:
+              $ref: '#/components/schemas/Hours'
+            services:
+              type: object
+            visn:
+              type: string
+    FacilityCollection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Facility'
+        meta:
+          type: object
+        links:
+          type: object
+    Hours:
+      type: object
+      additionalProperties:
+        type: string
+    Phone:
+      type: object
+      properties:
+        main:
+          type: string
+        fax:
+          type: string
+        afterHours:
+          type: string
+        patientAdvocate:
+          type: string
+        mentalHealthClinic:
+          type: string
+        enrollmentCoordinator:
+          type: string
+        pharmacy:
+          type: string
+    Addresses:
+      type: object
+      properties:
+        mailing:
+          $ref: '#/components/schemas/Address'
+        physical:
+          $ref: '#/components/schemas/Address'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+externalDocs:
+  description: Appeals Status API documentation
+  url: https://developer.va.gov/explore/api/appeals-status

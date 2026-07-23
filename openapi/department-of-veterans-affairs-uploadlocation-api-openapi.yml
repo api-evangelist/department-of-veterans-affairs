@@ -1,0 +1,64 @@
+openapi: 3.1.0
+info:
+  title: VA Appeals Status AllergyIntolerance UploadLocation API
+  description: The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.
+  version: '1'
+  contact:
+    name: VA API Platform
+    url: https://developer.va.gov/support/contact-us
+servers:
+- url: https://sandbox-api.va.gov/services/appeals/v1
+  description: Sandbox
+- url: https://api.va.gov/services/appeals/v1
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: UploadLocation
+  description: Request upload locations
+paths:
+  /uploads:
+    post:
+      tags:
+      - UploadLocation
+      summary: Request an upload location
+      operationId: createUpload
+      responses:
+        '202':
+          description: Upload location issued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadLocationResponse'
+components:
+  schemas:
+    UploadLocationResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            type:
+              type: string
+              const: document_upload
+            attributes:
+              type: object
+              properties:
+                guid:
+                  type: string
+                  format: uuid
+                location:
+                  type: string
+                  format: uri
+                status:
+                  type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+externalDocs:
+  description: Appeals Status API documentation
+  url: https://developer.va.gov/explore/api/appeals-status

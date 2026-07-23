@@ -1,0 +1,74 @@
+openapi: 3.1.0
+info:
+  title: VA Appeals Status AllergyIntolerance Observation API
+  description: The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.
+  version: '1'
+  contact:
+    name: VA API Platform
+    url: https://developer.va.gov/support/contact-us
+servers:
+- url: https://sandbox-api.va.gov/services/appeals/v1
+  description: Sandbox
+- url: https://api.va.gov/services/appeals/v1
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Observation
+paths:
+  /Observation:
+    get:
+      tags:
+      - Observation
+      summary: Search Observation resources
+      operationId: searchObservations
+      parameters:
+      - name: patient
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: category
+        in: query
+        schema:
+          type: string
+      - name: code
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: FHIR Bundle of Observation
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+components:
+  schemas:
+    Bundle:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          const: Bundle
+        type:
+          type: string
+        total:
+          type: integer
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              resource:
+                type: object
+              fullUrl:
+                type: string
+                format: uri
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+externalDocs:
+  description: Appeals Status API documentation
+  url: https://developer.va.gov/explore/api/appeals-status

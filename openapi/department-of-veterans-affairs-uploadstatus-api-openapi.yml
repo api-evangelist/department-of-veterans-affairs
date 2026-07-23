@@ -1,0 +1,116 @@
+openapi: 3.1.0
+info:
+  title: VA Appeals Status AllergyIntolerance UploadStatus API
+  description: The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.
+  version: '1'
+  contact:
+    name: VA API Platform
+    url: https://developer.va.gov/support/contact-us
+servers:
+- url: https://sandbox-api.va.gov/services/appeals/v1
+  description: Sandbox
+- url: https://api.va.gov/services/appeals/v1
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: UploadStatus
+  description: Submission status retrieval
+paths:
+  /uploads/{id}:
+    get:
+      tags:
+      - UploadStatus
+      summary: Get the status of an upload
+      operationId: getUploadStatus
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Upload status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadStatus'
+  /uploads/report:
+    post:
+      tags:
+      - UploadStatus
+      summary: Bulk status report for multiple GUIDs
+      operationId: bulkStatusReport
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+      responses:
+        '200':
+          description: List of statuses
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UploadStatus'
+components:
+  schemas:
+    UploadStatus:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            type:
+              type: string
+              const: document_upload
+            attributes:
+              type: object
+              properties:
+                guid:
+                  type: string
+                  format: uuid
+                status:
+                  type: string
+                  enum:
+                  - pending
+                  - uploaded
+                  - received
+                  - processing
+                  - success
+                  - vbms
+                  - error
+                  - expired
+                code:
+                  type: string
+                detail:
+                  type: string
+                location:
+                  type: string
+                updated_at:
+                  type: string
+                  format: date-time
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+externalDocs:
+  description: Appeals Status API documentation
+  url: https://developer.va.gov/explore/api/appeals-status

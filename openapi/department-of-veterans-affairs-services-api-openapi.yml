@@ -1,0 +1,63 @@
+openapi: 3.1.0
+info:
+  title: VA Appeals Status AllergyIntolerance Services API
+  description: The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.
+  version: '1'
+  contact:
+    name: VA API Platform
+    url: https://developer.va.gov/support/contact-us
+servers:
+- url: https://sandbox-api.va.gov/services/appeals/v1
+  description: Sandbox
+- url: https://api.va.gov/services/appeals/v1
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Services
+  description: Health, benefits, and other services offered at facilities
+paths:
+  /facilities/{id}/services:
+    get:
+      tags:
+      - Services
+      summary: List services offered by a facility
+      operationId: getFacilityServices
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Service list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Service'
+components:
+  schemas:
+    Service:
+      type: object
+      properties:
+        name:
+          type: string
+        serviceId:
+          type: string
+        link:
+          type: string
+        active:
+          type: boolean
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+externalDocs:
+  description: Appeals Status API documentation
+  url: https://developer.va.gov/explore/api/appeals-status

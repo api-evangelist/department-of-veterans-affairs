@@ -1,0 +1,80 @@
+openapi: 3.1.0
+info:
+  title: VA Appeals Status AllergyIntolerance Confirmation API
+  description: The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.
+  version: '1'
+  contact:
+    name: VA API Platform
+    url: https://developer.va.gov/support/contact-us
+servers:
+- url: https://sandbox-api.va.gov/services/appeals/v1
+  description: Sandbox
+- url: https://api.va.gov/services/appeals/v1
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Confirmation
+  description: Veteran status confirmation
+paths:
+  /status:
+    post:
+      tags:
+      - Confirmation
+      summary: Confirm Veteran status
+      operationId: confirmVeteranStatus
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmationRequest'
+      responses:
+        '200':
+          description: Confirmation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfirmationResponse'
+components:
+  schemas:
+    ConfirmationResponse:
+      type: object
+      properties:
+        veteran_status:
+          type: string
+          enum:
+          - confirmed
+          - not confirmed
+    ConfirmationRequest:
+      type: object
+      required:
+      - first_name
+      - last_name
+      - ssn
+      - birth_date
+      properties:
+        first_name:
+          type: string
+        middle_name:
+          type: string
+        last_name:
+          type: string
+        gender:
+          type: string
+          enum:
+          - M
+          - F
+        ssn:
+          type: string
+          pattern: ^\d{3}-?\d{2}-?\d{4}$
+        birth_date:
+          type: string
+          format: date
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+externalDocs:
+  description: Appeals Status API documentation
+  url: https://developer.va.gov/explore/api/appeals-status

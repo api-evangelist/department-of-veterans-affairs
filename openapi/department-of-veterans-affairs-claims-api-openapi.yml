@@ -1,0 +1,123 @@
+openapi: 3.1.0
+info:
+  title: VA Appeals Status AllergyIntolerance Claims API
+  description: The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.
+  version: '1'
+  contact:
+    name: VA API Platform
+    url: https://developer.va.gov/support/contact-us
+servers:
+- url: https://sandbox-api.va.gov/services/appeals/v1
+  description: Sandbox
+- url: https://api.va.gov/services/appeals/v1
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Claims
+  description: Veteran benefits claims operations
+paths:
+  /veterans/{veteranId}/claims:
+    get:
+      tags:
+      - Claims
+      summary: List a Veteran's claims
+      operationId: listClaims
+      parameters:
+      - name: veteranId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Claims list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimsResponse'
+  /veterans/{veteranId}/claims/{id}:
+    get:
+      tags:
+      - Claims
+      summary: Retrieve a single claim
+      operationId: getClaim
+      parameters:
+      - name: veteranId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Claim
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Claim'
+components:
+  schemas:
+    Claim:
+      type: object
+      required:
+      - id
+      - type
+      - attributes
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          example: claim
+        attributes:
+          type: object
+          properties:
+            baseEndProductCode:
+              type: string
+            claimDate:
+              type: string
+              format: date
+            claimType:
+              type: string
+            claimPhaseDates:
+              type: object
+            decisionLetterSent:
+              type: boolean
+            developmentLetterSent:
+              type: boolean
+            documentsNeeded:
+              type: boolean
+            endProductCode:
+              type: string
+            evidenceWaiverSubmitted5103:
+              type: boolean
+            lighthouseId:
+              type: string
+            status:
+              type: string
+              enum:
+              - PENDING
+              - CLAIM_RECEIVED
+              - INITIAL_REVIEW
+              - EVIDENCE_GATHERING_REVIEW_DECISION
+              - PREPARATION_FOR_NOTIFICATION
+              - COMPLETE
+    ClaimsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Claim'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+externalDocs:
+  description: Appeals Status API documentation
+  url: https://developer.va.gov/explore/api/appeals-status

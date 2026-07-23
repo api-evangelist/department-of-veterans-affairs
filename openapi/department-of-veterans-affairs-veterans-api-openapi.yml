@@ -1,0 +1,81 @@
+openapi: 3.1.0
+info:
+  title: VA Appeals Status AllergyIntolerance Veterans API
+  description: The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.
+  version: '1'
+  contact:
+    name: VA API Platform
+    url: https://developer.va.gov/support/contact-us
+servers:
+- url: https://sandbox-api.va.gov/services/appeals/v1
+  description: Sandbox
+- url: https://api.va.gov/services/appeals/v1
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Veterans
+paths:
+  /veterans/{veteranId}/526:
+    post:
+      tags:
+      - Veterans
+      summary: Submit a Form 526 disability compensation claim
+      operationId: submit526
+      parameters:
+      - name: veteranId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Form526Submission'
+      responses:
+        '202':
+          description: Submission accepted
+components:
+  schemas:
+    Form526Submission:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            type:
+              type: string
+              const: form/526
+            attributes:
+              type: object
+              properties:
+                claimantCertification:
+                  type: boolean
+                veteranIdentification:
+                  type: object
+                disabilities:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      disabilityActionType:
+                        type: string
+                      classificationCode:
+                        type: string
+                      diagnosticCode:
+                        type: integer
+                serviceInformation:
+                  type: object
+                directDeposit:
+                  type: object
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+externalDocs:
+  description: Appeals Status API documentation
+  url: https://developer.va.gov/explore/api/appeals-status

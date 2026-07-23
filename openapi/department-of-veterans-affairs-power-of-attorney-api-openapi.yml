@@ -1,0 +1,71 @@
+openapi: 3.1.0
+info:
+  title: VA Appeals Status AllergyIntolerance Power of Attorney API
+  description: The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.
+  version: '1'
+  contact:
+    name: VA API Platform
+    url: https://developer.va.gov/support/contact-us
+servers:
+- url: https://sandbox-api.va.gov/services/appeals/v1
+  description: Sandbox
+- url: https://api.va.gov/services/appeals/v1
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Power of Attorney
+  description: Representation requests and POA management
+paths:
+  /veterans/{veteranId}/power-of-attorney:
+    get:
+      tags:
+      - Power of Attorney
+      summary: Get current POA for a Veteran
+      operationId: getPOA
+      parameters:
+      - name: veteranId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Current POA
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PowerOfAttorney'
+components:
+  schemas:
+    PowerOfAttorney:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            attributes:
+              type: object
+              properties:
+                code:
+                  type: string
+                name:
+                  type: string
+                phoneNumber:
+                  type: string
+                type:
+                  type: string
+                  enum:
+                  - organization
+                  - individual
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+externalDocs:
+  description: Appeals Status API documentation
+  url: https://developer.va.gov/explore/api/appeals-status

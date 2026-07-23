@@ -1,0 +1,67 @@
+openapi: 3.1.0
+info:
+  title: VA Appeals Status AllergyIntolerance Intent To File API
+  description: The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.
+  version: '1'
+  contact:
+    name: VA API Platform
+    url: https://developer.va.gov/support/contact-us
+servers:
+- url: https://sandbox-api.va.gov/services/appeals/v1
+  description: Sandbox
+- url: https://api.va.gov/services/appeals/v1
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Intent To File
+  description: Intent to File operations
+paths:
+  /veterans/{veteranId}/intent-to-file:
+    post:
+      tags:
+      - Intent To File
+      summary: Submit an Intent to File
+      operationId: submitIntentToFile
+      parameters:
+      - name: veteranId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntentToFile'
+      responses:
+        '201':
+          description: Intent recorded
+components:
+  schemas:
+    IntentToFile:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            type:
+              type: string
+              const: intent_to_file
+            attributes:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                  - compensation
+                  - pension
+                  - survivor
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+externalDocs:
+  description: Appeals Status API documentation
+  url: https://developer.va.gov/explore/api/appeals-status

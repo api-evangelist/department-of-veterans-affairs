@@ -1,44 +1,35 @@
 openapi: 3.1.0
 info:
-  title: VA Forms API
-  description: >-
-    The VA Forms API provides programmatic access to the official catalog of
-    Department of Veterans Affairs forms, returning metadata, current PDF URLs,
-    revision dates, and deprecation/replacement information so partners can
-    surface up-to-date forms in their applications.
-  version: '0'
+  title: VA Appeals Status AllergyIntolerance Forms API
+  description: The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.
+  version: '1'
   contact:
     name: VA API Platform
     url: https://developer.va.gov/support/contact-us
-  license:
-    name: Creative Commons Attribution 4.0
-    url: https://creativecommons.org/licenses/by/4.0/
-externalDocs:
-  description: VA Forms API documentation
-  url: https://developer.va.gov/explore/api/va-forms
 servers:
-  - url: https://sandbox-api.va.gov/services/va_forms/v0
-    description: Sandbox
-  - url: https://api.va.gov/services/va_forms/v0
-    description: Production
-tags:
-  - name: Forms
-    description: Search and retrieve VA forms
+- url: https://sandbox-api.va.gov/services/appeals/v1
+  description: Sandbox
+- url: https://api.va.gov/services/appeals/v1
+  description: Production
 security:
-  - ApiKeyAuth: []
+- BearerAuth: []
+tags:
+- name: Forms
+  description: Search and retrieve VA forms
 paths:
   /forms:
     get:
-      tags: [Forms]
+      tags:
+      - Forms
       summary: List VA forms
       description: Returns the full or filtered list of VA forms.
       operationId: listForms
       parameters:
-        - name: query
-          in: query
-          schema:
-            type: string
-          description: Search query against form name or title
+      - name: query
+        in: query
+        schema:
+          type: string
+        description: Search query against form name or title
       responses:
         '200':
           description: A list of VA forms
@@ -53,16 +44,17 @@ paths:
                       $ref: '#/components/schemas/Form'
   /forms/{form_name}:
     get:
-      tags: [Forms]
+      tags:
+      - Forms
       summary: Retrieve a single VA form
       operationId: getForm
       parameters:
-        - name: form_name
-          in: path
-          required: true
-          schema:
-            type: string
-          example: 10-10EZ
+      - name: form_name
+        in: path
+        required: true
+        schema:
+          type: string
+        example: 10-10EZ
       responses:
         '200':
           description: A VA form
@@ -76,15 +68,13 @@ paths:
         '404':
           description: Form not found
 components:
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: apikey
   schemas:
     Form:
       type: object
-      required: [id, type, attributes]
+      required:
+      - id
+      - type
+      - attributes
       properties:
         id:
           type: string
@@ -143,3 +133,10 @@ components:
                     type: string
             vaFormAdministration:
               type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+externalDocs:
+  description: Appeals Status API documentation
+  url: https://developer.va.gov/explore/api/appeals-status
