@@ -1,0 +1,79 @@
+openapi: 3.1.0
+info:
+  title: VA Veteran Confirmation API
+  description: >-
+    The Veteran Confirmation API allows partners to verify a person's
+    Veteran status given basic identifying information. The response is a
+    simple confirmed/not confirmed payload, suitable for discount programs,
+    benefit verification, and identity workflows.
+  version: '1'
+  contact:
+    name: VA API Platform
+    url: https://developer.va.gov/support/contact-us
+  license:
+    name: Creative Commons Attribution 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+externalDocs:
+  description: Veteran Confirmation API documentation
+  url: https://developer.va.gov/explore/api/veteran-confirmation
+servers:
+  - url: https://sandbox-api.va.gov/services/veteran_confirmation/v1
+    description: Sandbox
+  - url: https://api.va.gov/services/veteran_confirmation/v1
+    description: Production
+tags:
+  - name: Confirmation
+    description: Veteran status confirmation
+security:
+  - ApiKeyAuth: []
+paths:
+  /status:
+    post:
+      tags: [Confirmation]
+      summary: Confirm Veteran status
+      operationId: confirmVeteranStatus
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmationRequest'
+      responses:
+        '200':
+          description: Confirmation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfirmationResponse'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+  schemas:
+    ConfirmationRequest:
+      type: object
+      required: [first_name, last_name, ssn, birth_date]
+      properties:
+        first_name:
+          type: string
+        middle_name:
+          type: string
+        last_name:
+          type: string
+        gender:
+          type: string
+          enum: [M, F]
+        ssn:
+          type: string
+          pattern: ^\d{3}-?\d{2}-?\d{4}$
+        birth_date:
+          type: string
+          format: date
+    ConfirmationResponse:
+      type: object
+      properties:
+        veteran_status:
+          type: string
+          enum: [confirmed, not confirmed]
