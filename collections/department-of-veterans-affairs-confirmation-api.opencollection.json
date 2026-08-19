@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VA Appeals Status AllergyIntolerance Confirmation API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Confirmation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Confirm Veteran status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox-api.va.gov/services/appeals/v1/status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Confirm Veteran status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

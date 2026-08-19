@@ -1,0 +1,136 @@
+{
+  "item": [
+    {
+      "id": "87a5c120-b3c5-4503-915f-d65d22c7d9d7",
+      "name": "Services",
+      "description": {
+        "content": "Health, benefits, and other services offered at facilities",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cc7d8468-4595-4533-a0d6-44a17957e91a",
+          "name": "List services offered by a facility",
+          "request": {
+            "name": "List services offered by a facility",
+            "description": {},
+            "url": {
+              "path": [
+                "facilities",
+                ":id",
+                "services"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "787965fa-fa02-4726-b947-0d059c5271f1",
+              "name": "Service list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "facilities",
+                    ":id",
+                    "services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"name\": \"string\",\n      \"serviceId\": \"string\",\n      \"link\": \"string\",\n      \"active\": false\n    },\n    {\n      \"name\": \"string\",\n      \"serviceId\": \"string\",\n      \"link\": \"string\",\n      \"active\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox-api.va.gov/services/appeals/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "408fbed0-f14a-4ecf-be47-4f4dec36d7d3",
+    "name": "VA Appeals Status AllergyIntolerance Services API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.\n\nContact Support:\n Name: VA API Platform",
+      "type": "text/plain"
+    }
+  }
+}

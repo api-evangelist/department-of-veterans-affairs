@@ -1,0 +1,116 @@
+{
+  "item": [
+    {
+      "id": "fa5fb72b-6c28-4066-a778-c0246b79951e",
+      "name": "UploadLocation",
+      "description": {
+        "content": "Request upload locations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "00b1d6db-0648-442e-af55-fbb94332ddc8",
+          "name": "Request an upload location",
+          "request": {
+            "name": "Request an upload location",
+            "description": {},
+            "url": {
+              "path": [
+                "uploads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd33e20b-93a2-4520-a1f0-6a6ec6d58a9c",
+              "name": "Upload location issued",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uploads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"6e7a2d5f-0c8c-376a-54d0-a94df113e192\",\n    \"type\": \"string\",\n    \"attributes\": {\n      \"guid\": \"7e898b7e-f6e2-b208-3264-e74d45ba9500\",\n      \"location\": \"http://BpqvYZfyjSu.mseyn95H3Xt0bh8o45esYOr,MxkD2gncNo,vLxnttfgoxwmgQwrACkgaaJy6IAfnZ+5UJMZZptraeyCiTi\",\n      \"status\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox-api.va.gov/services/appeals/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0c2d25cc-cb67-40b0-b3a6-14dde8fe6249",
+    "name": "VA Appeals Status AllergyIntolerance UploadLocation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.\n\nContact Support:\n Name: VA API Platform",
+      "type": "text/plain"
+    }
+  }
+}

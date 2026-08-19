@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VA Appeals Status AllergyIntolerance Claims API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Claims",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List a Veteran's claims",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox-api.va.gov/services/appeals/v1/veterans/:veteranId/claims",
+            "params": [
+              {
+                "name": "veteranId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a Veteran's claims"
+        },
+        {
+          "info": {
+            "name": "Retrieve a single claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox-api.va.gov/services/appeals/v1/veterans/:veteranId/claims/:id",
+            "params": [
+              {
+                "name": "veteranId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single claim"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

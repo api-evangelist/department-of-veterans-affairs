@@ -1,0 +1,181 @@
+{
+  "item": [
+    {
+      "id": "33dcd405-4295-4bbe-98ac-0a609eafd30f",
+      "name": "NearbyFacilities",
+      "description": {
+        "content": "Locate facilities near a given address or coordinates",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fb3d676b-9458-454a-b891-b99460d7337e",
+          "name": "Find facilities near an address or coordinates",
+          "request": {
+            "name": "Find facilities near an address or coordinates",
+            "description": {},
+            "url": {
+              "path": [
+                "nearby"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "street_address",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "city",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "zip",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "drive_time",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9719764a-c171-4456-8a50-ce4753fc17a2",
+              "name": "Nearby facilities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nearby"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "street_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "drive_time",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"vha_688\",\n      \"type\": \"facility\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"facilityType\": \"va_cemetery\",\n        \"classification\": \"string\",\n        \"website\": \"https://PlDNpGdjrtpaAnjgE.dtdyrJkUJYYfhK9RHzy7Dwyvr5pvJbEIdzgX4CcKgtcSZGaePDZK0H,4abjgG0jOh\",\n        \"lat\": 9195.971440399886,\n        \"long\": 3041.6933493790134,\n        \"timeZone\": \"string\",\n        \"address\": {\n          \"mailing\": {\n            \"zip\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"address1\": \"string\",\n            \"address2\": \"string\",\n            \"address3\": \"string\"\n          },\n          \"physical\": {\n            \"zip\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"address1\": \"string\",\n            \"address2\": \"string\",\n            \"address3\": \"string\"\n          }\n        },\n        \"phone\": {\n          \"main\": \"string\",\n          \"fax\": \"string\",\n          \"afterHours\": \"string\",\n          \"patientAdvocate\": \"string\",\n          \"mentalHealthClinic\": \"string\",\n          \"enrollmentCoordinator\": \"string\",\n          \"pharmacy\": \"string\"\n        },\n        \"hours\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"services\": {},\n        \"visn\": \"string\"\n      }\n    },\n    {\n      \"id\": \"vha_688\",\n      \"type\": \"facility\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"facilityType\": \"va_benefits_facility\",\n        \"classification\": \"string\",\n        \"website\": \"https://nyLTNZhk.rjrfZr3eztWdPQxAN7qSDf6SKbzG5\",\n        \"lat\": 3619.9011606987065,\n        \"long\": 5477.168668068827,\n        \"timeZone\": \"string\",\n        \"address\": {\n          \"mailing\": {\n            \"zip\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"address1\": \"string\",\n            \"address2\": \"string\",\n            \"address3\": \"string\"\n          },\n          \"physical\": {\n            \"zip\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"address1\": \"string\",\n            \"address2\": \"string\",\n            \"address3\": \"string\"\n          }\n        },\n        \"phone\": {\n          \"main\": \"string\",\n          \"fax\": \"string\",\n          \"afterHours\": \"string\",\n          \"patientAdvocate\": \"string\",\n          \"mentalHealthClinic\": \"string\",\n          \"enrollmentCoordinator\": \"string\",\n          \"pharmacy\": \"string\"\n        },\n        \"hours\": {\n          \"key_0\": \"string\"\n        },\n        \"services\": {},\n        \"visn\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox-api.va.gov/services/appeals/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1a4782fe-8c72-4984-88ec-9c733f60dd28",
+    "name": "VA Appeals Status AllergyIntolerance NearbyFacilities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.\n\nContact Support:\n Name: VA API Platform",
+      "type": "text/plain"
+    }
+  }
+}

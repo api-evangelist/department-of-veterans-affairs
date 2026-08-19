@@ -1,0 +1,146 @@
+{
+  "item": [
+    {
+      "id": "0fb04e1d-8910-44e6-a9f9-09117e510f2b",
+      "name": "Observation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b296482f-3ee6-47d8-a2de-ecf66d75a395",
+          "name": "Search Observation resources",
+          "request": {
+            "name": "Search Observation resources",
+            "description": {},
+            "url": {
+              "path": [
+                "Observation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1896673f-7b97-402b-b7d2-15c0e153d197",
+              "name": "FHIR Bundle of Observation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Observation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"string\",\n  \"type\": \"string\",\n  \"total\": 6265,\n  \"entry\": [\n    {\n      \"resource\": {},\n      \"fullUrl\": \"http://IvXkCVeJSuiu.togBSiG,ULO6+s\"\n    },\n    {\n      \"resource\": {},\n      \"fullUrl\": \"https://dCDVoZX.cknnA41m5kYGGzvGyZ4xk67Ctf02OZ6N-8AHSSwjJDeCVfRPMZVOyQaOwGZNB1mCIh\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox-api.va.gov/services/appeals/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2e1bf1fa-6943-426b-b48c-3209e692b7c7",
+    "name": "VA Appeals Status AllergyIntolerance Observation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.\n\nContact Support:\n Name: VA API Platform",
+      "type": "text/plain"
+    }
+  }
+}

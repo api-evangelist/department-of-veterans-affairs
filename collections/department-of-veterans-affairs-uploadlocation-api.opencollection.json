@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VA Appeals Status AllergyIntolerance UploadLocation API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "UploadLocation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request an upload location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox-api.va.gov/services/appeals/v1/uploads"
+          },
+          "docs": "Request an upload location"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

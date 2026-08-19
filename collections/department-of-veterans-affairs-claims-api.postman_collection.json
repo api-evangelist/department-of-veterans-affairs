@@ -1,0 +1,247 @@
+{
+  "item": [
+    {
+      "id": "b427696a-c990-430a-8b84-029681bcdd79",
+      "name": "Claims",
+      "description": {
+        "content": "Veteran benefits claims operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "025356a7-973a-4786-98f1-6acdf4e72c18",
+          "name": "List a Veteran's claims",
+          "request": {
+            "name": "List a Veteran's claims",
+            "description": {},
+            "url": {
+              "path": [
+                "veterans",
+                ":veteranId",
+                "claims"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "veteranId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6695eee8-1f50-4460-85d7-9a5165872e00",
+              "name": "Claims list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veterans",
+                    ":veteranId",
+                    "claims"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "veteranId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"claim\",\n      \"attributes\": {\n        \"baseEndProductCode\": \"string\",\n        \"claimDate\": \"1989-10-22\",\n        \"claimType\": \"string\",\n        \"claimPhaseDates\": {},\n        \"decisionLetterSent\": true,\n        \"developmentLetterSent\": false,\n        \"documentsNeeded\": false,\n        \"endProductCode\": \"string\",\n        \"evidenceWaiverSubmitted5103\": true,\n        \"lighthouseId\": \"string\",\n        \"status\": \"INITIAL_REVIEW\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"claim\",\n      \"attributes\": {\n        \"baseEndProductCode\": \"string\",\n        \"claimDate\": \"2014-03-13\",\n        \"claimType\": \"string\",\n        \"claimPhaseDates\": {},\n        \"decisionLetterSent\": false,\n        \"developmentLetterSent\": true,\n        \"documentsNeeded\": false,\n        \"endProductCode\": \"string\",\n        \"evidenceWaiverSubmitted5103\": false,\n        \"lighthouseId\": \"string\",\n        \"status\": \"PREPARATION_FOR_NOTIFICATION\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24649669-96f3-4073-8d2c-add001f0d61c",
+          "name": "Retrieve a single claim",
+          "request": {
+            "name": "Retrieve a single claim",
+            "description": {},
+            "url": {
+              "path": [
+                "veterans",
+                ":veteranId",
+                "claims",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "veteranId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "19d90b82-6f09-430a-a1c0-c53b4da85469",
+              "name": "Claim",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veterans",
+                    ":veteranId",
+                    "claims",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "veteranId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"claim\",\n  \"attributes\": {\n    \"baseEndProductCode\": \"string\",\n    \"claimDate\": \"1975-12-25\",\n    \"claimType\": \"string\",\n    \"claimPhaseDates\": {},\n    \"decisionLetterSent\": false,\n    \"developmentLetterSent\": false,\n    \"documentsNeeded\": false,\n    \"endProductCode\": \"string\",\n    \"evidenceWaiverSubmitted5103\": true,\n    \"lighthouseId\": \"string\",\n    \"status\": \"INITIAL_REVIEW\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox-api.va.gov/services/appeals/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "93a967ca-5d86-413c-a45f-4df7c8e62275",
+    "name": "VA Appeals Status AllergyIntolerance Claims API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.\n\nContact Support:\n Name: VA API Platform",
+      "type": "text/plain"
+    }
+  }
+}

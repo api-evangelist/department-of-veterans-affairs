@@ -1,0 +1,384 @@
+{
+  "item": [
+    {
+      "id": "55b24812-f580-4b27-a6c4-6aaabfe91de0",
+      "name": "Facilities",
+      "description": {
+        "content": "Search and retrieve VA facilities",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b3075aa8-3b39-4dee-9985-fa76bad3ee9a",
+          "name": "List or search VA facilities",
+          "request": {
+            "name": "List or search VA facilities",
+            "description": {
+              "content": "Search VA facilities by bounding box, ids, type, services, zip, state, or visn.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "facilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "bbox[]",
+                  "value": "<number>",
+                  "description": "Bounding box (lng_min, lat_min, lng_max, lat_max)"
+                },
+                {
+                  "disabled": false,
+                  "key": "bbox[]",
+                  "value": "<number>",
+                  "description": "Bounding box (lng_min, lat_min, lng_max, lat_max)"
+                },
+                {
+                  "disabled": false,
+                  "key": "bbox[]",
+                  "value": "<number>",
+                  "description": "Bounding box (lng_min, lat_min, lng_max, lat_max)"
+                },
+                {
+                  "disabled": false,
+                  "key": "bbox[]",
+                  "value": "<number>",
+                  "description": "Bounding box (lng_min, lat_min, lng_max, lat_max)"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Comma-separated facility IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "services[]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "services[]",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "zip",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "visn",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "30"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3db69877-2fcb-4ec4-813a-56014a4dc194",
+              "name": "Collection of facilities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "facilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox[]",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "bbox[]",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "bbox[]",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "bbox[]",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "services[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "services[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "visn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "30"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"vha_688\",\n      \"type\": \"facility\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"facilityType\": \"vet_center\",\n        \"classification\": \"string\",\n        \"website\": \"https://xDGVeXJYOapYRkjCgyndBJBldtWxsd.owiQf3zCNw9GmyhgHsOwve0S0pOX1zddTt6\",\n        \"lat\": 8137.588793827131,\n        \"long\": 200.12091305893432,\n        \"timeZone\": \"string\",\n        \"address\": {\n          \"mailing\": {\n            \"zip\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"address1\": \"string\",\n            \"address2\": \"string\",\n            \"address3\": \"string\"\n          },\n          \"physical\": {\n            \"zip\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"address1\": \"string\",\n            \"address2\": \"string\",\n            \"address3\": \"string\"\n          }\n        },\n        \"phone\": {\n          \"main\": \"string\",\n          \"fax\": \"string\",\n          \"afterHours\": \"string\",\n          \"patientAdvocate\": \"string\",\n          \"mentalHealthClinic\": \"string\",\n          \"enrollmentCoordinator\": \"string\",\n          \"pharmacy\": \"string\"\n        },\n        \"hours\": {\n          \"key_0\": \"string\"\n        },\n        \"services\": {},\n        \"visn\": \"string\"\n      }\n    },\n    {\n      \"id\": \"vha_688\",\n      \"type\": \"facility\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"facilityType\": \"vet_center\",\n        \"classification\": \"string\",\n        \"website\": \"http://de.rzmdMLxztS\",\n        \"lat\": 8716.019089549576,\n        \"long\": 9146.109816538514,\n        \"timeZone\": \"string\",\n        \"address\": {\n          \"mailing\": {\n            \"zip\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"address1\": \"string\",\n            \"address2\": \"string\",\n            \"address3\": \"string\"\n          },\n          \"physical\": {\n            \"zip\": \"string\",\n            \"city\": \"string\",\n            \"state\": \"string\",\n            \"address1\": \"string\",\n            \"address2\": \"string\",\n            \"address3\": \"string\"\n          }\n        },\n        \"phone\": {\n          \"main\": \"string\",\n          \"fax\": \"string\",\n          \"afterHours\": \"string\",\n          \"patientAdvocate\": \"string\",\n          \"mentalHealthClinic\": \"string\",\n          \"enrollmentCoordinator\": \"string\",\n          \"pharmacy\": \"string\"\n        },\n        \"hours\": {\n          \"key_0\": \"string\"\n        },\n        \"services\": {},\n        \"visn\": \"string\"\n      }\n    }\n  ],\n  \"meta\": {},\n  \"links\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2faca3c-0f88-41d7-af88-f5ef5f5b434b",
+          "name": "Retrieve a single VA facility",
+          "request": {
+            "name": "Retrieve a single VA facility",
+            "description": {},
+            "url": {
+              "path": [
+                "facilities",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ad161da-9a00-40bb-8574-ef611c0aa91d",
+              "name": "Facility detail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "facilities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"vha_688\",\n  \"type\": \"facility\",\n  \"attributes\": {\n    \"name\": \"string\",\n    \"facilityType\": \"va_cemetery\",\n    \"classification\": \"string\",\n    \"website\": \"https://eK.lkxuw7IFBpKIW.0D2G,RoYaTm\",\n    \"lat\": 3446.8836816936764,\n    \"long\": 5970.529500576347,\n    \"timeZone\": \"string\",\n    \"address\": {\n      \"mailing\": {\n        \"zip\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"address1\": \"string\",\n        \"address2\": \"string\",\n        \"address3\": \"string\"\n      },\n      \"physical\": {\n        \"zip\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"address1\": \"string\",\n        \"address2\": \"string\",\n        \"address3\": \"string\"\n      }\n    },\n    \"phone\": {\n      \"main\": \"string\",\n      \"fax\": \"string\",\n      \"afterHours\": \"string\",\n      \"patientAdvocate\": \"string\",\n      \"mentalHealthClinic\": \"string\",\n      \"enrollmentCoordinator\": \"string\",\n      \"pharmacy\": \"string\"\n    },\n    \"hours\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"services\": {},\n    \"visn\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea903268-8960-442d-b99c-d8a1cc9e919e",
+              "name": "Facility not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "facilities",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox-api.va.gov/services/appeals/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "972a5883-9ae4-432f-92b9-867de60c0ed0",
+    "name": "VA Appeals Status AllergyIntolerance Facilities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.\n\nContact Support:\n Name: VA API Platform",
+      "type": "text/plain"
+    }
+  }
+}

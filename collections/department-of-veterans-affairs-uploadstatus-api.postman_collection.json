@@ -1,0 +1,232 @@
+{
+  "item": [
+    {
+      "id": "11a0797e-087d-4caf-8f11-ffc0b1152724",
+      "name": "UploadStatus",
+      "description": {
+        "content": "Submission status retrieval",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "23749fb2-7462-42fb-8360-9f82bd0e8ccf",
+          "name": "Get the status of an upload",
+          "request": {
+            "name": "Get the status of an upload",
+            "description": {},
+            "url": {
+              "path": [
+                "uploads",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0063e90f-b326-4371-9823-37719c91419e",
+              "name": "Upload status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uploads",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"9cdf9e6d-474e-0a00-e40e-e08a62ace3cf\",\n    \"type\": \"string\",\n    \"attributes\": {\n      \"guid\": \"e9487403-dfea-a94d-e608-d28fda0640cb\",\n      \"status\": \"vbms\",\n      \"code\": \"string\",\n      \"detail\": \"string\",\n      \"location\": \"string\",\n      \"updated_at\": \"1961-05-07T06:15:02.321Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d8469b1-5bf9-4a24-b3eb-aa13df12455d",
+          "name": "Bulk status report for multiple GUIDs",
+          "request": {
+            "name": "Bulk status report for multiple GUIDs",
+            "description": {},
+            "url": {
+              "path": [
+                "uploads",
+                "report"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1284a668-6665-47de-b646-b1a6aa973312",
+              "name": "List of statuses",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uploads",
+                    "report"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"data\": {\n        \"id\": \"9e1df4f2-b251-e07c-c5f1-a141ad08f78d\",\n        \"type\": \"string\",\n        \"attributes\": {\n          \"guid\": \"b54dff5a-d86c-aaea-5401-ed7940b47e69\",\n          \"status\": \"error\",\n          \"code\": \"string\",\n          \"detail\": \"string\",\n          \"location\": \"string\",\n          \"updated_at\": \"2019-07-05T21:40:41.859Z\"\n        }\n      }\n    },\n    {\n      \"data\": {\n        \"id\": \"a3a0ddd3-2fa8-0b24-d119-24caa95e549d\",\n        \"type\": \"string\",\n        \"attributes\": {\n          \"guid\": \"bd171703-7b5d-06b0-20b9-59f681e7b6ed\",\n          \"status\": \"expired\",\n          \"code\": \"string\",\n          \"detail\": \"string\",\n          \"location\": \"string\",\n          \"updated_at\": \"2010-11-03T21:40:45.372Z\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox-api.va.gov/services/appeals/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e6554dba-a26c-4e1c-b2a3-b085a8809537",
+    "name": "VA Appeals Status AllergyIntolerance UploadStatus API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.\n\nContact Support:\n Name: VA API Platform",
+      "type": "text/plain"
+    }
+  }
+}

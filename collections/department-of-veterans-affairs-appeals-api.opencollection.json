@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VA Status AllergyIntolerance Appeals API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Appeals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List a Veteran's appeals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox-api.va.gov/services/appeals/v1/appeals",
+            "headers": [
+              {
+                "name": "ssn",
+                "value": ""
+              },
+              {
+                "name": "X-VA-Receipt-Date",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "List a Veteran's appeals"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

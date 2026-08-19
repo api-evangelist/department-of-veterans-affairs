@@ -1,0 +1,136 @@
+{
+  "item": [
+    {
+      "id": "d3babb83-9c75-4f6e-aaeb-43836e955566",
+      "name": "Power of Attorney",
+      "description": {
+        "content": "Representation requests and POA management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8162c152-b30a-4ef3-aa76-54c23a403ec8",
+          "name": "Get current POA for a Veteran",
+          "request": {
+            "name": "Get current POA for a Veteran",
+            "description": {},
+            "url": {
+              "path": [
+                "veterans",
+                ":veteranId",
+                "power-of-attorney"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "veteranId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8bb095dc-48df-4318-b749-1f65ec2f66bc",
+              "name": "Current POA",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veterans",
+                    ":veteranId",
+                    "power-of-attorney"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "veteranId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"type\": \"string\",\n    \"attributes\": {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"type\": \"individual\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sandbox-api.va.gov/services/appeals/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e11e0900-4a84-468f-b561-56d240c83abd",
+    "name": "VA Appeals Status AllergyIntolerance Power of Attorney API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.\n\nContact Support:\n Name: VA API Platform",
+      "type": "text/plain"
+    }
+  }
+}

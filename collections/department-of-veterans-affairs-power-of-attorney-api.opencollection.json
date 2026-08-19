@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VA Appeals Status AllergyIntolerance Power of Attorney API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Power of Attorney",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get current POA for a Veteran",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sandbox-api.va.gov/services/appeals/v1/veterans/:veteranId/power-of-attorney",
+            "params": [
+              {
+                "name": "veteranId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get current POA for a Veteran"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VA Appeals Status AllergyIntolerance Intent To File API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Intent To File",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit an Intent to File",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sandbox-api.va.gov/services/appeals/v1/veterans/:veteranId/intent-to-file",
+            "params": [
+              {
+                "name": "veteranId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit an Intent to File"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
