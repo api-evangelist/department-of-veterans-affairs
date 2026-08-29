@@ -11,16 +11,36 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 1
+edge_count: 3
 edges:
 - tag: AllergyIntolerance
   spec_file: department-of-veterans-affairs-allergyintolerance-api-openapi.yml
   capability_id: BC-2900.60
   capability_id_l1: BC-2900
   capability_name: Healthcare Interoperability Operations
-  confidence: 0.8
-  evidence: GET /AllergyIntolerance  searchAllergies  'Search AllergyIntolerance resources for a patient';
-    schema Bundle
-  reason: An HL7 FHIR R4 read endpoint returning a Bundle of AllergyIntolerance resources — operation
-    of a FHIR endpoint exposing clinical data to authorised applications, which is Healthcare Interoperability
-    Operations. Ignoring the misleading 'Appeals Status' title per the operations-win rule.
+  confidence: 0.72
+  evidence: 'GET /AllergyIntolerance  searchAllergies  Search AllergyIntolerance resources for a patient;
+    schemas: Bundle'
+  reason: HL7 FHIR read endpoint exposing patient allergy resources as FHIR Bundles — operation of FHIR
+    endpoints for clinical data sharing, i.e. healthcare interoperability operations. The title mentioning
+    Appeals Status is spec-splitting noise and is disregarded.
+- tag: Condition
+  spec_file: department-of-veterans-affairs-condition-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.72
+  evidence: 'GET /Condition  searchConditions  Search Condition resources for a patient; schemas: Bundle'
+  reason: FHIR Condition search returning Bundles — a FHIR clinical-data endpoint, i.e. healthcare interoperability
+    operations rather than clinical documentation authoring.
+- tag: MedicationRequest
+  spec_file: department-of-veterans-affairs-medicationrequest-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.7
+  evidence: 'GET /MedicationRequest  searchMedicationRequests  Search MedicationRequest resources; schemas:
+    Bundle'
+  reason: FHIR MedicationRequest search returning Bundles — exposure of medication data through a FHIR
+    endpoint for external consumers, i.e. healthcare interoperability operations rather than pharmacy
+    dispensing operations.
