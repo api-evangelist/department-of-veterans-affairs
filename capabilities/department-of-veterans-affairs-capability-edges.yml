@@ -1,0 +1,26 @@
+slug: department-of-veterans-affairs
+provider: Department of Veterans Affairs (VA)
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Healthcare Providers
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: AllergyIntolerance
+  spec_file: department-of-veterans-affairs-allergyintolerance-api-openapi.yml
+  capability_id: BC-2900.60
+  capability_id_l1: BC-2900
+  capability_name: Healthcare Interoperability Operations
+  confidence: 0.8
+  evidence: GET /AllergyIntolerance  searchAllergies  'Search AllergyIntolerance resources for a patient';
+    schema Bundle
+  reason: An HL7 FHIR R4 read endpoint returning a Bundle of AllergyIntolerance resources — operation
+    of a FHIR endpoint exposing clinical data to authorised applications, which is Healthcare Interoperability
+    Operations. Ignoring the misleading 'Appeals Status' title per the operations-win rule.

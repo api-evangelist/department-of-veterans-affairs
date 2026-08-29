@@ -46,6 +46,9 @@ tags_raw:
   - Healthcare
   - Veterans
 common:
+  - type: CapabilityMap
+    url: capabilities/department-of-veterans-affairs-capability-edges.yml
+    name: Department of Veterans Affairs (VA) Business Capability Map
   - type: AgenticAccess
     url: agentic-access/department-of-veterans-affairs-agentic-access.yml
   - type: VulnerabilityDisclosure
