@@ -46,6 +46,8 @@ tags_raw:
   - Healthcare
   - Veterans
 common:
+  - type: Website
+    url: https://www.va.gov/
   - type: CapabilityMap
     url: capabilities/department-of-veterans-affairs-capability-edges.yml
     name: Department of Veterans Affairs (VA) Business Capability Map
