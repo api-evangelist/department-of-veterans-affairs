@@ -241,73 +241,6 @@ apis:
   - type: ChangeLog
     url: >-
       https://developer.va.gov/explore/api/veteran-service-history-and-eligibility/release-notes
-- aid: department-of-veterans-affairs:department-of-veterans-affairs-allergyintolerance-api
-  name: Department of Veterans Affairs (VA) AllergyIntolerance API
-  description: >-
-    The AllergyIntolerance API from Department of Veterans Affairs (VA) — 1 operation(s) for allergyintolerance.
-  humanURL: https://developer.va.gov/explore/api/va-facilities
-  baseURL: https://api.va.gov/services/va_facilities/v1
-  tags:
-  - AllergyIntolerance
-  properties:
-  - type: OpenAPI
-    url: openapi/department-of-veterans-affairs-allergyintolerance-api-openapi.yml
-  - type: Documentation
-    url: https://developer.va.gov/explore/api/va-facilities
-  - type: JSONSchema
-    url: json-schema/va-facility-schema.json
-  - type: Examples
-    url: examples/facility-example.json
-  - type: Sandbox
-    url: https://developer.va.gov/explore/api/va-facilities/sandbox-access
-  - type: ChangeLog
-    url: https://developer.va.gov/explore/api/va-facilities/release-notes
-  - type: Documentation
-    url: https://developer.va.gov/explore/api/va-forms
-  - type: JSONSchema
-    url: json-schema/va-form-schema.json
-  - type: Examples
-    url: examples/form-example.json
-  - type: Sandbox
-    url: https://developer.va.gov/explore/api/va-forms/sandbox-access
-  - type: ChangeLog
-    url: https://developer.va.gov/explore/api/va-forms/release-notes
-  - type: Documentation
-    url: https://developer.va.gov/explore/api/benefits-claims
-  - type: JSONSchema
-    url: json-schema/va-claim-schema.json
-  - type: Examples
-    url: examples/claim-example.json
-  - type: Authentication
-    url: https://developer.va.gov/explore/api/benefits-claims/authorization-code
-  - type: Sandbox
-    url: https://developer.va.gov/explore/api/benefits-claims/sandbox-access
-  - type: ChangeLog
-    url: https://developer.va.gov/explore/api/benefits-claims/release-notes
-  - type: Documentation
-    url: https://developer.va.gov/explore/api/benefits-intake
-  - type: Sandbox
-    url: https://developer.va.gov/explore/api/benefits-intake/sandbox-access
-  - type: ChangeLog
-    url: https://developer.va.gov/explore/api/benefits-intake/release-notes
-  - type: Documentation
-    url: https://developer.va.gov/explore/api/appeals-status
-  - type: JSONSchema
-    url: json-schema/va-appeal-schema.json
-  - type: ChangeLog
-    url: https://developer.va.gov/explore/api/appeals-status/release-notes
-  - type: Documentation
-    url: https://developer.va.gov/explore/api/clinical-health
-  - type: ChangeLog
-    url: https://developer.va.gov/explore/api/clinical-health/release-notes
-  - type: Documentation
-    url: https://developer.va.gov/explore/api/veteran-confirmation
-  - type: JSONSchema
-    url: json-schema/va-veteran-confirmation-schema.json
-  - type: Sandbox
-    url: https://developer.va.gov/explore/api/veteran-confirmation/sandbox-access
-  - type: ChangeLog
-    url: https://developer.va.gov/explore/api/veteran-confirmation/release-notes
 - aid: department-of-veterans-affairs:department-of-veterans-affairs-appeals-api
   name: Department of Veterans Affairs (VA) Appeals API
   description: Appeals status and history
@@ -715,73 +648,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/department-of-veterans-affairs-intent-to-file-api-openapi.yml
-  - type: Documentation
-    url: https://developer.va.gov/explore/api/va-facilities
-  - type: JSONSchema
-    url: json-schema/va-facility-schema.json
-  - type: Examples
-    url: examples/facility-example.json
-  - type: Sandbox
-    url: https://developer.va.gov/explore/api/va-facilities/sandbox-access
-  - type: ChangeLog
-    url: https://developer.va.gov/explore/api/va-facilities/release-notes
-  - type: Documentation
-    url: https://developer.va.gov/explore/api/va-forms
-  - type: JSONSchema
-    url: json-schema/va-form-schema.json
-  - type: Examples
-    url: examples/form-example.json
-  - type: Sandbox
-    url: https://developer.va.gov/explore/api/va-forms/sandbox-access
-  - type: ChangeLog
-    url: https://developer.va.gov/explore/api/va-forms/release-notes
-  - type: Documentation
-    url: https://developer.va.gov/explore/api/benefits-claims
-  - type: JSONSchema
-    url: json-schema/va-claim-schema.json
-  - type: Examples
-    url: examples/claim-example.json
-  - type: Authentication
-    url: https://developer.va.gov/explore/api/benefits-claims/authorization-code
-  - type: Sandbox
-    url: https://developer.va.gov/explore/api/benefits-claims/sandbox-access
-  - type: ChangeLog
-    url: https://developer.va.gov/explore/api/benefits-claims/release-notes
-  - type: Documentation
-    url: https://developer.va.gov/explore/api/benefits-intake
-  - type: Sandbox
-    url: https://developer.va.gov/explore/api/benefits-intake/sandbox-access
-  - type: ChangeLog
-    url: https://developer.va.gov/explore/api/benefits-intake/release-notes
-  - type: Documentation
-    url: https://developer.va.gov/explore/api/appeals-status
-  - type: JSONSchema
-    url: json-schema/va-appeal-schema.json
-  - type: ChangeLog
-    url: https://developer.va.gov/explore/api/appeals-status/release-notes
-  - type: Documentation
-    url: https://developer.va.gov/explore/api/clinical-health
-  - type: ChangeLog
-    url: https://developer.va.gov/explore/api/clinical-health/release-notes
-  - type: Documentation
-    url: https://developer.va.gov/explore/api/veteran-confirmation
-  - type: JSONSchema
-    url: json-schema/va-veteran-confirmation-schema.json
-  - type: Sandbox
-    url: https://developer.va.gov/explore/api/veteran-confirmation/sandbox-access
-  - type: ChangeLog
-    url: https://developer.va.gov/explore/api/veteran-confirmation/release-notes
-- aid: department-of-veterans-affairs:department-of-veterans-affairs-medicationrequest-api
-  name: Department of Veterans Affairs (VA) MedicationRequest API
-  description: >-
-    The MedicationRequest API from Department of Veterans Affairs (VA) — 1 operation(s) for medicationrequest.
-  humanURL: https://developer.va.gov/explore/api/va-facilities
-  baseURL: https://api.va.gov/services/va_facilities/v1
-  tags:
-  - MedicationRequest
-  properties:
-  - type: OpenAPI
-    url: openapi/department-of-veterans-affairs-medicationrequest-api-openapi.yml
   - type: Documentation
     url: https://developer.va.gov/explore/api/va-facilities
   - type: JSONSchema
@@ -1311,6 +1177,142 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/department-of-veterans-affairs-veterans-api-openapi.yml
+  - type: Documentation
+    url: https://developer.va.gov/explore/api/va-facilities
+  - type: JSONSchema
+    url: json-schema/va-facility-schema.json
+  - type: Examples
+    url: examples/facility-example.json
+  - type: Sandbox
+    url: https://developer.va.gov/explore/api/va-facilities/sandbox-access
+  - type: ChangeLog
+    url: https://developer.va.gov/explore/api/va-facilities/release-notes
+  - type: Documentation
+    url: https://developer.va.gov/explore/api/va-forms
+  - type: JSONSchema
+    url: json-schema/va-form-schema.json
+  - type: Examples
+    url: examples/form-example.json
+  - type: Sandbox
+    url: https://developer.va.gov/explore/api/va-forms/sandbox-access
+  - type: ChangeLog
+    url: https://developer.va.gov/explore/api/va-forms/release-notes
+  - type: Documentation
+    url: https://developer.va.gov/explore/api/benefits-claims
+  - type: JSONSchema
+    url: json-schema/va-claim-schema.json
+  - type: Examples
+    url: examples/claim-example.json
+  - type: Authentication
+    url: https://developer.va.gov/explore/api/benefits-claims/authorization-code
+  - type: Sandbox
+    url: https://developer.va.gov/explore/api/benefits-claims/sandbox-access
+  - type: ChangeLog
+    url: https://developer.va.gov/explore/api/benefits-claims/release-notes
+  - type: Documentation
+    url: https://developer.va.gov/explore/api/benefits-intake
+  - type: Sandbox
+    url: https://developer.va.gov/explore/api/benefits-intake/sandbox-access
+  - type: ChangeLog
+    url: https://developer.va.gov/explore/api/benefits-intake/release-notes
+  - type: Documentation
+    url: https://developer.va.gov/explore/api/appeals-status
+  - type: JSONSchema
+    url: json-schema/va-appeal-schema.json
+  - type: ChangeLog
+    url: https://developer.va.gov/explore/api/appeals-status/release-notes
+  - type: Documentation
+    url: https://developer.va.gov/explore/api/clinical-health
+  - type: ChangeLog
+    url: https://developer.va.gov/explore/api/clinical-health/release-notes
+  - type: Documentation
+    url: https://developer.va.gov/explore/api/veteran-confirmation
+  - type: JSONSchema
+    url: json-schema/va-veteran-confirmation-schema.json
+  - type: Sandbox
+    url: https://developer.va.gov/explore/api/veteran-confirmation/sandbox-access
+  - type: ChangeLog
+    url: https://developer.va.gov/explore/api/veteran-confirmation/release-notes
+- aid: department-of-veterans-affairs:department-of-veterans-affairs-allergy-intolerance-api
+  name: Department of Veterans Affairs (VA) Allergy Intolerance API
+  description: >-
+    The Allergy Intolerance API from Department of Veterans Affairs (VA) — 1 operation(s) for allergy
+    intolerance.
+  humanURL: https://developer.va.gov/explore/api/address-validation
+  baseURL: https://api.va.gov/services/va_facilities/v1
+  tags:
+  - Allergy Intolerance
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-veterans-affairs-allergy-intolerance-api-openapi.yml
+  - type: Documentation
+    url: https://developer.va.gov/explore/api/va-facilities
+  - type: JSONSchema
+    url: json-schema/va-facility-schema.json
+  - type: Examples
+    url: examples/facility-example.json
+  - type: Sandbox
+    url: https://developer.va.gov/explore/api/va-facilities/sandbox-access
+  - type: ChangeLog
+    url: https://developer.va.gov/explore/api/va-facilities/release-notes
+  - type: Documentation
+    url: https://developer.va.gov/explore/api/va-forms
+  - type: JSONSchema
+    url: json-schema/va-form-schema.json
+  - type: Examples
+    url: examples/form-example.json
+  - type: Sandbox
+    url: https://developer.va.gov/explore/api/va-forms/sandbox-access
+  - type: ChangeLog
+    url: https://developer.va.gov/explore/api/va-forms/release-notes
+  - type: Documentation
+    url: https://developer.va.gov/explore/api/benefits-claims
+  - type: JSONSchema
+    url: json-schema/va-claim-schema.json
+  - type: Examples
+    url: examples/claim-example.json
+  - type: Authentication
+    url: https://developer.va.gov/explore/api/benefits-claims/authorization-code
+  - type: Sandbox
+    url: https://developer.va.gov/explore/api/benefits-claims/sandbox-access
+  - type: ChangeLog
+    url: https://developer.va.gov/explore/api/benefits-claims/release-notes
+  - type: Documentation
+    url: https://developer.va.gov/explore/api/benefits-intake
+  - type: Sandbox
+    url: https://developer.va.gov/explore/api/benefits-intake/sandbox-access
+  - type: ChangeLog
+    url: https://developer.va.gov/explore/api/benefits-intake/release-notes
+  - type: Documentation
+    url: https://developer.va.gov/explore/api/appeals-status
+  - type: JSONSchema
+    url: json-schema/va-appeal-schema.json
+  - type: ChangeLog
+    url: https://developer.va.gov/explore/api/appeals-status/release-notes
+  - type: Documentation
+    url: https://developer.va.gov/explore/api/clinical-health
+  - type: ChangeLog
+    url: https://developer.va.gov/explore/api/clinical-health/release-notes
+  - type: Documentation
+    url: https://developer.va.gov/explore/api/veteran-confirmation
+  - type: JSONSchema
+    url: json-schema/va-veteran-confirmation-schema.json
+  - type: Sandbox
+    url: https://developer.va.gov/explore/api/veteran-confirmation/sandbox-access
+  - type: ChangeLog
+    url: https://developer.va.gov/explore/api/veteran-confirmation/release-notes
+- aid: department-of-veterans-affairs:department-of-veterans-affairs-medication-request-api
+  name: Department of Veterans Affairs (VA) Medication Request API
+  description: >-
+    The Medication Request API from Department of Veterans Affairs (VA) — 1 operation(s) for medication
+    request.
+  humanURL: https://developer.va.gov/explore/api/address-validation
+  baseURL: https://api.va.gov/services/va_facilities/v1
+  tags:
+  - Medication Request
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-veterans-affairs-medication-request-api-openapi.yml
   - type: Documentation
     url: https://developer.va.gov/explore/api/va-facilities
   - type: JSONSchema
