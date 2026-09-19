@@ -222,6 +222,10 @@ apis:
   tags:
   - Health
   - FHIR
+  - Patients
+  tags_raw:
+  - Health
+  - FHIR
   - Patient
   properties:
   - type: Documentation
@@ -843,6 +847,8 @@ apis:
   humanURL: https://developer.va.gov/explore/api/va-facilities
   baseURL: https://api.va.gov/services/va_facilities/v1
   tags:
+  - Patients
+  tags_raw:
   - Patient
   properties:
   - type: OpenAPI
@@ -1241,6 +1247,8 @@ apis:
   humanURL: https://developer.va.gov/explore/api/address-validation
   baseURL: https://api.va.gov/services/va_facilities/v1
   tags:
+  - AllergyIntolerance
+  tags_raw:
   - Allergy Intolerance
   properties:
   - type: OpenAPI
@@ -1309,6 +1317,8 @@ apis:
   humanURL: https://developer.va.gov/explore/api/address-validation
   baseURL: https://api.va.gov/services/va_facilities/v1
   tags:
+  - MedicationRequest
+  tags_raw:
   - Medication Request
   properties:
   - type: OpenAPI
