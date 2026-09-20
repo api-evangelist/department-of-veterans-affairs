@@ -14,7 +14,8 @@ capability_model:
 edge_count: 3
 edges:
 - tag: AllergyIntolerance
-  spec_file: department-of-veterans-affairs-allergyintolerance-api-openapi.yml
+  spec_file: department-of-veterans-affairs-allergy-intolerance-api-openapi.yml
+  reanchored_from: department-of-veterans-affairs-allergyintolerance-api-openapi.yml
   capability_id: BC-2900.60
   capability_id_l1: BC-2900
   capability_name: Healthcare Interoperability Operations
@@ -34,7 +35,8 @@ edges:
   reason: FHIR Condition search returning Bundles — a FHIR clinical-data endpoint, i.e. healthcare interoperability
     operations rather than clinical documentation authoring.
 - tag: MedicationRequest
-  spec_file: department-of-veterans-affairs-medicationrequest-api-openapi.yml
+  spec_file: department-of-veterans-affairs-medication-request-api-openapi.yml
+  reanchored_from: department-of-veterans-affairs-medicationrequest-api-openapi.yml
   capability_id: BC-2900.60
   capability_id_l1: BC-2900
   capability_name: Healthcare Interoperability Operations
