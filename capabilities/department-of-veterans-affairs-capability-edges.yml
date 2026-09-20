@@ -11,8 +11,40 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 3
+edge_count: 7
 edges:
+- tag: Appeals
+  spec_file: department-of-veterans-affairs-appeals-api-openapi.yml
+  capability_id: BC-3220.50
+  capability_id_l1: BC-3220
+  capability_name: Appeals & Ombudsman Management
+  confidence: 0.85
+  evidence: GET /appeals — List a Veteran's appeals; "exposes the current status, decision-review type,
+    and event history of a Veteran's appeal or higher-level review"
+  reason: Operations expose the status and history of appeals and higher-level reviews of agency benefit
+    decisions, which is administrative review/appeals management for citizens (BC-3220.50).
+  recovered_from: vertical-public-sector-government-edges.json
+- tag: Claims
+  spec_file: department-of-veterans-affairs-claims-api-openapi.yml
+  capability_id: BC-3230
+  capability_id_l1: BC-3230
+  capability_name: Public Benefits & Entitlements Management
+  confidence: 0.75
+  evidence: GET /veterans/{veteranId}/claims — List a Veteran's claims; schemas Claim, ClaimsResponse
+  reason: Surfaces Veterans' benefits claims held by the VA, i.e. administration of statutory entitlement
+    claims (BC-3230). Evidence does not name a specific sub-capability (eligibility vs award vs monitoring),
+    so L2 is left unset.
+  recovered_from: vertical-public-sector-government-edges.json
+- tag: Veterans
+  spec_file: department-of-veterans-affairs-veterans-api-openapi.yml
+  capability_id: BC-3230.20
+  capability_id_l1: BC-3230
+  capability_name: Eligibility Determination
+  confidence: 0.75
+  evidence: POST /veterans/{veteranId}/526  submit526  Submit a Form 526 disability compensation claim
+  reason: Submission of a disability compensation claim (Form 526) initiates statutory benefit eligibility
+    determination — public benefits and entitlements administration. Schema Form526Submission confirms.
+  recovered_from: vertical-public-sector-government-edges.json
 - tag: AllergyIntolerance
   spec_file: department-of-veterans-affairs-allergy-intolerance-api-openapi.yml
   reanchored_from: department-of-veterans-affairs-allergyintolerance-api-openapi.yml
@@ -34,6 +66,17 @@ edges:
   evidence: 'GET /Condition  searchConditions  Search Condition resources for a patient; schemas: Bundle'
   reason: FHIR Condition search returning Bundles — a FHIR clinical-data endpoint, i.e. healthcare interoperability
     operations rather than clinical documentation authoring.
+- tag: Intent To File
+  spec_file: department-of-veterans-affairs-intent-to-file-api-openapi.yml
+  capability_id: BC-3230.20
+  capability_id_l1: BC-3230
+  capability_name: Eligibility Determination
+  confidence: 0.7
+  evidence: POST /veterans/{veteranId}/intent-to-file  submitIntentToFile  Submit an Intent to File
+  reason: An Intent to File is the formal preservation of an effective date for a VA benefits claim —
+    intake step of the public benefits/entitlements process. Mapped at L1 benefits with moderate confidence
+    on the sub-capability (intake/eligibility vs award).
+  recovered_from: vertical-public-sector-government-edges.json
 - tag: MedicationRequest
   spec_file: department-of-veterans-affairs-medication-request-api-openapi.yml
   reanchored_from: department-of-veterans-affairs-medicationrequest-api-openapi.yml
