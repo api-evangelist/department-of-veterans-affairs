@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: VA Status AllergyIntolerance Appeals API
+  title: VA Status Appeals API
   description: The Appeals Status API exposes the current status, decision-review type, and event history of a Veteran's appeal or higher-level review. It allows Veterans and authorized representatives to track progress through the appeals modernization process.
   version: '1'
   contact:

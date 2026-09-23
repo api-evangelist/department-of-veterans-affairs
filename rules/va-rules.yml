@@ -1,4 +1,4 @@
-name: Department of Veterans Affairs API Rules
+x-name: Department of Veterans Affairs API Rules
 description: >-
   Cross-API rules and constraints governing the use of VA API Platform
   endpoints. These reflect public access policy, data sensitivity, and known
